@@ -14,13 +14,23 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="main.js"></script>
 
     <title>Rule Builder | EOP</title>
     <style>
       /* BS Overrides */
+      /* font ramp adjust */
+      label {
+        font-size: 0.88rem;
+        margin-bottom: 0.25rem;
+      }
       a {
+        font-size: 0.88rem;
         color: #3673a3;
       }
+      /* end font ramp adjust */
+
       .btn-primary {
         background-color: #3673a3;
         border-color: #3673a3;
@@ -42,6 +52,39 @@
       .table--landing tbody tr td:nth-child(2) {
         min-width: 50%;
       }
+
+      /* AG Grid Overrides */
+      .ag-root-wrapper {
+        border: none !important;
+      }
+      .ag-header-row {
+        background-color: #fff !important;
+      }
+
+      /*  .ag-row .ag-cell:first-child {
+        background-color: red !important;
+      }
+      .ag-row .ag-cell:nth-child(2) {
+        background-color: orange !important;
+      }
+      .ag-row .ag-cell:nth-child(3) {
+        background-color: yellow !important;
+      }
+      .ag-row .ag-cell:nth-child(4) {
+        background-color: limegreen !important;
+      }
+      .ag-row .ag-cell:nth-child(5) {
+        background-color: green !important;
+      }
+      .ag-row .ag-cell:nth-child(5) {
+        background-color: blue !important;
+      }
+      .ag-row .ag-cell:nth-child(6) {
+        background-color: blueviolet!important;
+      }
+      .ag-row .ag-cell:last-child {
+        background-color: purple !important;
+      } */
     </style>
   </head>
   <body>
@@ -262,6 +305,15 @@
                   </tbody>
                 </table>
               </div>
+
+              <hr />
+              <span class="text-danger">AG Grid Example</span>
+              <hr />
+              <div
+                id="myGrid"
+                style="height: 200px; width: 100%;"
+                class="ag-theme-alpine"
+              ></div>
             </form>
           </main>
         </div>
