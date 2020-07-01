@@ -132,6 +132,11 @@
         right: 0.5rem;
         top: 0.6rem;
       }
+
+      .form-row--compressed .form-control {
+        padding-left:0; 
+        padding-right:0;
+      }
     </style>
   </head>
   <body>
@@ -775,7 +780,10 @@
           <div class="form-group col-auto">
             <select id="account2" class="form-control form-control-sm">
               <option selected>Select</option>
-              <option>...</option>
+              <option>equal</option>
+              <option>not equal</option>
+              <option>in</option>
+              <option>not in</option>
             </select>
           </div>
           <div class="form-group col-auto">
@@ -833,7 +841,7 @@
         </section>
 
         <!-- ROW --------------------------------------- -->
-        <section class="form-row align-items-center no-gutters">
+        <section class="form-row form-row--compressed align-items-center no-gutters">
           <div class="form-group col-md-1">
             <h5 class="col-form-label col-form-label-sm">
               Math
@@ -856,7 +864,9 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>Var</option>
-              <option>...</option>
+              <option>Total-1</option>
+              <option>Total-2</option>
+              <option>Total-3</option>
             </select>
           </div>
 
@@ -871,7 +881,9 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>Col</option>
-              <option>...</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
             </select>
           </div>
           <div class="form-group col-auto">
@@ -908,7 +920,10 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>Year</option>
-              <option>...</option>
+              <option>PY-1</option>
+              <option>PY</option>
+              <option>CY</option>
+              <option>BY+9</option>
             </select>
           </div>
 
@@ -925,7 +940,10 @@
               aria-labelledby="helptext2"
             >
               <option selected>Year</option>
-              <option>...</option>
+              <option>PY-1</option>
+              <option>PY</option>
+              <option>CY</option>
+              <option>BY+9</option>
             </select>
           </div>
 
@@ -954,7 +972,8 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>Option</option>
-              <option>...</option>
+              <option>(positive amts only)</option>
+              <option>(negative amts only)</option>
             </select>
           </div>
 
@@ -1036,7 +1055,9 @@
               aria-label="From"
             >
               <option selected>From</option>
-              <option>...</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 10</option>
             </select>
           </div>
           <div class="form-group col-auto">
@@ -1050,7 +1071,9 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>To</option>
-              <option>...</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 10</option>
             </select>
           </div>
           <div class="form-group col-auto">
@@ -1060,7 +1083,10 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>Select</option>
-              <option>...</option>
+              <option>equal</option>
+              <option>not equal</option>
+              <option>greater than or equal</option>
+              <option>does not have comment</option>
             </select>
           </div>
 
@@ -1108,9 +1134,9 @@
         </section>
 
         <!-- ROW --------------------------------------- -->
-        <section class="form-row align-items-center">
+        <section class="form-row form-row--compressed align-items-center">
           <div class="form-group col-md-1">
-            <h5 class="col-form-label coComparel-form-label-sm"></h5>
+            <h5 class="col-form-label col-form-label-sm">Compare</h5>
           </div>
 
           <div class="form-group col-auto">
@@ -1120,7 +1146,9 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>Select</option>
-              <option>...</option>
+              <option>These Amounts</option>
+              <option>Total-1</option>
+              <option>Trigger Line Amounts</option>
             </select>
           </div>
 
@@ -1131,7 +1159,10 @@
               aria-label="From"
             >
               <option selected>From</option>
-              <option>...</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+              <option>col 10</option>
             </select>
           </div>
           <div class="form-group col-auto">
@@ -1145,7 +1176,10 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>To</option>
-              <option>...</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+              <option>col 10</option>
             </select>
           </div>
           <div class="form-group col-auto">
@@ -1155,7 +1189,9 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>Select</option>
-              <option>...</option>
+              <option>equal</option>
+              <option>not equal</option>
+              <option>greater than or equal</option>
             </select>
           </div>
           <div class="form-group col-auto">
@@ -1165,7 +1201,8 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>Select</option>
-              <option>...</option>
+              <option>Total-1</option>
+              <option>Total-2</option>
             </select>
           </div>
 
@@ -1176,7 +1213,10 @@
               aria-label="From"
             >
               <option selected>From</option>
-              <option>...</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+              <option>col 10</option>
             </select>
           </div>
           <div class="form-group col-auto">
@@ -1190,7 +1230,10 @@
               aria-label="{{Add_Label_Here}}"
             >
               <option selected>To</option>
-              <option>...</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+              <option>col 10</option>
             </select>
           </div>
           <div class="form-group col-auto">
