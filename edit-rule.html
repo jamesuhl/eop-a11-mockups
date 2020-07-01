@@ -20,12 +20,12 @@
     <style>
       /* BS Overrides */
       /* font ramp adjust */
-      label { 
-        font-size: .88rem;
-        margin-bottom: .25rem;
+      label {
+        font-size: 0.88rem;
+        margin-bottom: 0.25rem;
       }
       a {
-        font-size: .88rem;
+        font-size: 0.88rem;
         color: #3673a3;
       }
       /* end font ramp adjust */
@@ -76,23 +76,22 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.349' viewBox='0 0 12 10.349'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M28.791,35h2.883a.719.719,0,0,1,.721.721v2.9h3.117a.721.721,0,0,1,.51,1.231l-5.279,5.285a.721.721,0,0,1-1.021,0l-5.276-5.285a.722.722,0,0,1,.51-1.231h3.114v-2.9A.719.719,0,0,1,28.791,35Z' transform='translate(-24.234 -35)'/%3E%3C/svg%3E");
       }
       .icon-disclosure {
-      background-image: url("data:image/svg+xml,%3Csvg class='bi bi-chevron-right' width='1em' height='1em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-    }
-    .icon--append {
-      background-repeat: no-repeat;
-      background-position: right .25rem center;
-      padding-right:1.5rem;
-    }
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9.71' viewBox='0 0 16 9.71'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M13.034,132.947l-7.121-7.121a.879.879,0,0,1,0-1.244l.831-.831a.879.879,0,0,1,1.242,0l5.67,5.643,5.67-5.643a.879.879,0,0,1,1.242,0l.831.831a.879.879,0,0,1,0,1.244l-7.121,7.121a.879.879,0,0,1-1.244,0Z' transform='translate(21.656 133.204) rotate(180)'/%3E%3C/svg%3E");
+      }
+      .icon-disclosure.collapsed {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9.71' viewBox='0 0 16 9.71'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M13.034,132.947l-7.121-7.121a.879.879,0,0,1,0-1.244l.831-.831a.879.879,0,0,1,1.242,0l5.67,5.643,5.67-5.643a.879.879,0,0,1,1.242,0l.831.831a.879.879,0,0,1,0,1.244l-7.121,7.121a.879.879,0,0,1-1.244,0Z' transform='translate(-5.656 -123.495)'/%3E%3C/svg%3E");
+      }
+      .icon--append {
+        background-repeat: no-repeat;
+        background-position: right 0.25rem center;
+        padding-right: 1.5rem;
+      }
 
-    .icon--prepend {
-      background-repeat: no-repeat;
-      background-position: left .2rem center;
-      padding-left:1.5rem;
-    }
-
-    .icon-disclosure.collapsed {
-      background-image: url("data:image/svg+xml,%3Csvg class='bi bi-chevron-down' width='1em' height='1em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-    }
+      .icon--prepend {
+        background-repeat: no-repeat;
+        background-position: left 0.2rem center;
+        padding-left: 1.5rem;
+      }
 
       /* @UI remove unneeded rules here */
       .list-rule-definitions,
@@ -137,6 +136,14 @@
   </head>
   <body>
     <!-- skip links go here -->
+    <nav class="nav-skip-links" aria-label="Skip Links">
+      <a class="sr-only focusable" id="a-skiplink-main" href="#main-content"
+        >Skip to main content</a
+      >
+      <a class="sr-only focusable" id="a-skiplink-footer" href="#site-footer"
+        >Skip to footer</a
+      >
+    </nav>
 
     <h1 class="sr-only">Edit Rule | Rule Builder</h1>
 
@@ -232,19 +239,29 @@
                   ></label
                 >
                 <div class="input-group">
-                  <input type="text" class="form-control w-50" id="ruleNum" />
-                  <label class="col-form-label" for="ruleNum"
+                  <input
+                    type="text"
+                    class="form-control w-50"
+                    id="ruleNum"
+                    aria-describedby="datagen"
+                  />
+                  <label class="col-form-label" for="ruleNum2"
                     ><span aria-hidden="true">-</span
                     ><span class="sr-only"
                       >Rule Number (Enter digits after hyphen)</span
                     ></label
                   >
-                  <input type="text" class="form-control" id="inputCity" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="ruleNum2"
+                    aria-describedby="datagen"
+                  />
                 </div>
               </div>
 
               <div class="form-group col">
-                <label class="col-form-label">DATAGEN</label>
+                <p class="col-form-label" id="datagen">DATAGEN</p>
               </div>
 
               <div class="form-group col">
@@ -263,8 +280,8 @@
                 <input type="text" class="form-control w-50" id="a11-ref-2" />
               </div>
               <div class="form-group col">
-                <label for="inputZip">Severity</label>
-                <input type="text" class="form-control" id="inputZip" />
+                <label for="severity1">Severity</label>
+                <input type="text" class="form-control" id="severity1" />
               </div>
 
               <div class="form-group col text-right">
@@ -272,16 +289,16 @@
                   class="btn btn-outline-primary icon-disclosure icon--append collapsed"
                   type="button"
                   data-toggle="collapse"
-                  data-target="#collapseExample"
+                  data-target="#collapseExample0"
                   aria-expanded="false"
-                  aria-controls="collapseExample"
+                  aria-controls="collapseExample0"
                 >
                   Clone
                 </button>
               </div>
             </div>
 
-            <div class="collapse mb-3" id="collapseExample">
+            <div class="collapse mb-3" id="collapseExample0">
               <div class="card card-body bg-light">
                 <!-- ROW --------------------------------------- -->
                 <section class="form-row align-items-center no-gutters">
@@ -293,13 +310,13 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
+                      name="cloneOptions"
+                      id="cloneRadio1"
                       value="option2"
                     />
                     <label
                       class="form-check-label col-form-label-sm"
-                      for="inlineRadio2"
+                      for="cloneRadio1"
                       >All</label
                     >
                   </div>
@@ -307,13 +324,13 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
+                      name="cloneOptions"
+                      id="cloneRadio2"
                       value="option2"
                     />
                     <label
                       class="form-check-label col-form-label-sm"
-                      for="inlineRadio2"
+                      for="cloneRadio2"
                       >A-11 Refs</label
                     >
                   </div>
@@ -321,13 +338,13 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
+                      name="cloneOptions"
+                      id="cloneRadio3"
                       value="option2"
                     />
                     <label
                       class="form-check-label col-form-label-sm"
-                      for="inlineRadio2"
+                      for="cloneRadio3"
                       >Description</label
                     >
                   </div>
@@ -336,13 +353,13 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
+                      name="cloneOptions"
+                      id="cloneRadio4"
                       value="option2"
                     />
                     <label
                       class="form-check-label col-form-label-sm"
-                      for="inlineRadio2"
+                      for="cloneRadio4"
                       >Comments</label
                     >
                   </div>
@@ -351,13 +368,13 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
+                      name="cloneOptions"
+                      id="cloneRadio5"
                       value="option2"
                     />
                     <label
                       class="form-check-label col-form-label-sm"
-                      for="inlineRadio2"
+                      for="cloneRadio5"
                       >Groups</label
                     >
                   </div>
@@ -366,13 +383,13 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
+                      name="cloneOptions"
+                      id="cloneRadio6"
                       value="option2"
                     />
                     <label
                       class="form-check-label col-form-label-sm"
-                      for="inlineRadio2"
+                      for="cloneRadio6"
                       >Definition</label
                     >
                   </div>
@@ -380,13 +397,13 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
+                      name="cloneOptions"
+                      id="cloneRadio7"
                       value="option2"
                     />
                     <label
                       class="form-check-label col-form-label-sm"
-                      for="inlineRadio2"
+                      for="cloneRadio7"
                       >Severity</label
                     >
                   </div>
@@ -394,16 +411,16 @@
                   <div class="form-check form-check-inline">
                     <label
                       class="form-check-label col-form-label-sm mr-2"
-                      for="inlineRadio2"
+                      for="cloneFromRule1"
                       >From rule</label
                     >
                     <div class="input-group" style="max-width: 140px;">
                       <input
                         type="text"
                         class="form-control form-control-sm w-50"
-                        id="ruleNum"
+                        id="cloneFromRule1"
                       />
-                      <label class="col-form-label" for="ruleNum"
+                      <label class="col-form-label" for="cloneFromRule2"
                         ><span aria-hidden="true">-</span
                         ><span class="sr-only"
                           >Rule Number (Enter digits after hyphen)</span
@@ -412,7 +429,7 @@
                       <input
                         type="text"
                         class="form-control form-control-sm"
-                        id="inputCity"
+                        id="cloneFromRule2"
                       />
                     </div>
                   </div>
@@ -428,23 +445,16 @@
 
             <div class="form-row">
               <div class="form-group col">
-                <label for="validationTextarea">Description</label>
-                <textarea
-                  class="form-control"
-                  id="validationTextarea"
-                ></textarea>
+                <label for="description1">Description</label>
+                <textarea class="form-control" id="description1"></textarea>
               </div>
               <div class="form-group col">
-                <label for="validationTextarea">Comments</label>
-                <textarea
-                  class="form-control"
-                  id="validationTextarea"
-                ></textarea>
+                <label for="comments1">Comments</label>
+                <textarea class="form-control" id="comments1"></textarea>
               </div>
             </div>
 
             <div class="form-row">
-
               <div class="form-group col-auto">
                 <button
                   class="btn btn-outline-primary icon-disclosure icon--append collapsed"
@@ -459,81 +469,134 @@
               </div>
 
               <div class="form-group col-5">
-                <!-- @UI: create a custom class here -->
-                <div
-                  class="alert alert-primary alert-dismissible rounded-pill fade show py-1 bg-primary border border-primary"
-                  role="alert"
-                >
-                  <span class="text-white"
-                    >Edit rule has an associated excel report</span
+                <!-- @Developer: div with aria-live MUST be in DOM when page/view loads, dynamically added HTML in this div is announced to screenreader  -->
+                <div aria-live="polite">
+                  <div
+                    class="alert alert-primary alert-dismissible rounded-pill fade show py-1 bg-primary border border-primary"
                   >
-                  <button
-                    type="button"
-                    class="close py-0 text-white"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    <span class="text-white"
+                      >Edit rule has an associated excel report</span
+                    >
+                    <button
+                      type="button"
+                      class="close py-0 text-white"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="collapse mb-3" id="collapseExample-2" >
+            <div class="collapse mb-3" id="collapseExample-2">
               <div class="card card-body bg-light">
                 <!-- ROW --------------------------------------- -->
                 <section class="form-row align-items-top">
-                  
                   <div class="col">
                     <h5 class="sr-only">Options for Group</h5>
 
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1">
-                      <label class="custom-control-label" for="customCheck1">Baseline</label>
-                  </div>
-                    <div class="custom-control custom-checkbox"> 
-                      <input type="checkbox" class="custom-control-input" id="customCheck2">
-                      <label class="custom-control-label" for="customCheck2">Edit rule has an associated excel report</label>
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck1"
+                      />
+                      <label class="custom-control-label" for="customCheck1"
+                        >Baseline</label
+                      >
                     </div>
-                    <div class="custom-control custom-checkbox"> 
-                      <input type="checkbox" class="custom-control-input" id="customCheck3">
-                      <label class="custom-control-label" for="customCheck3">Mid-Session</label>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck2"
+                      />
+                      <label class="custom-control-label" for="customCheck2"
+                        >Edit rule has an associated excel report</label
+                      >
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck3"
+                      />
+                      <label class="custom-control-label" for="customCheck3"
+                        >Mid-Session</label
+                      >
                     </div>
                   </div>
                   <div class="col">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck4">
-                      <label class="custom-control-label" for="customCheck4">Budget Session</label>
-                  </div>
-                    <div class="custom-control custom-checkbox"> 
-                      <input type="checkbox" class="custom-control-input" id="customCheck5">
-                      <label class="custom-control-label" for="customCheck5">Edit rule has online Help</label>
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck4"
+                      />
+                      <label class="custom-control-label" for="customCheck4"
+                        >Budget Session</label
+                      >
                     </div>
-                    <div class="custom-control custom-checkbox"> 
-                      <input type="checkbox" class="custom-control-input" id="customCheck6">
-                      <label class="custom-control-label" for="customCheck6">Restricted Exclusions. Must be for specific lines.</label>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck5"
+                      />
+                      <label class="custom-control-label" for="customCheck5"
+                        >Edit rule has online Help</label
+                      >
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck6"
+                      />
+                      <label class="custom-control-label" for="customCheck6"
+                        >Restricted Exclusions. Must be for specific
+                        lines.</label
+                      >
                     </div>
                   </div>
                   <div class="col">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck7">
-                      <label class="custom-control-label" for="customCheck7">Credit</label>
-                  </div>
-                    <div class="custom-control custom-checkbox"> 
-                      <input type="checkbox" class="custom-control-input" id="customCheck8">
-                      <label class="custom-control-label" for="customCheck8">Facts || related</label>
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck7"
+                      />
+                      <label class="custom-control-label" for="customCheck7"
+                        >Credit</label
+                      >
                     </div>
-                    <div class="custom-control custom-checkbox"> 
-                      <input type="checkbox" class="custom-control-input" id="customCheck9">
-                      <label class="custom-control-label" for="customCheck9">Restricted Exclusions. Only admin users can suppress these rules</label>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck8"
+                      />
+                      <label class="custom-control-label" for="customCheck8"
+                        >Facts || related</label
+                      >
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck9"
+                      />
+                      <label class="custom-control-label" for="customCheck9"
+                        >Restricted Exclusions. Only admin users can suppress
+                        these rules</label
+                      >
                     </div>
                   </div>
-                  </section>
-                  </div>
-                  </div>
-
-
-
+                </section>
+              </div>
+            </div>
 
             <table class="table table-sm table-hover table-rule-definitions">
               <thead>
@@ -679,8 +742,14 @@
           <div class="col text-right">
             <p>
               <small class="text-muted"
-                >Last published: Mark Smith 6/19/2020 17:23:05<br />
-                Last updated: Mark Smith 6/19/2020 17:05:45</small
+                >Last published: Mark Smith
+                <time datetime="2020-06-19T17:23:05.929"
+                  >6/19/2020 17:23:05</time
+                ><br />
+                Last updated: Mark Smith
+                <time datetime="2020-06-19T17:23:05.929"
+                  >6/19/2020 17:23:05</time
+                ></small
               >
             </p>
           </div>
@@ -691,11 +760,12 @@
           <div class="form-group col-md-1">
             <h5 class="col-form-label col-form-label-sm">Account</h5>
           </div>
+          <!-- @Developer: we need to add screen reader labels to these fields: {{Add_Label_Here}} -->
           <div class="form-group col-md-2">
             <select
-              id="inputState"
               class="form-control form-control-sm"
-              aria-label="{{Add_Label_Here}}"
+              aria-labelid="account1"
+              ="{{Add_Label_Here}}"
             >
               <option selected>Select concept</option>
               <option>{{concept_1}}</option>
@@ -703,7 +773,7 @@
             </select>
           </div>
           <div class="form-group col-auto">
-            <select id="inputState" class="form-control form-control-sm">
+            <select id="account2" class="form-control form-control-sm">
               <option selected>Select</option>
               <option>...</option>
             </select>
@@ -712,12 +782,14 @@
             <input
               type="text"
               class="form-control form-control-sm"
-              id="inputCity"
+              id="account3"
               aria-label="{{Add_Label_Here}}"
             />
           </div>
           <div class="col form-group text-right">
-            <button type="button" class="btn btn-sm btn-primary">Add</button>
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Account</span>
+            </button>
           </div>
         </section>
         <!-- ROW --------------------------------------- -->
@@ -727,7 +799,7 @@
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="line1"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -737,7 +809,7 @@
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="line2"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -749,12 +821,14 @@
             <input
               type="text"
               class="form-control form-control-sm"
-              id="inputCity"
+              id="line3"
               aria-label="{{Add_Label_Here}}"
             />
           </div>
           <div class="col form-group text-right">
-            <button type="button" class="btn btn-sm btn-primary">Add</button>
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this line</span>
+            </button>
           </div>
         </section>
 
@@ -767,18 +841,17 @@
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="math1"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
-              <!-- @UI disabled attr here makes it not selectable but user can not clear after making selection -->
-              <option selected>Operation</option>
+              <option>Operation</option>
               <option>...</option>
             </select>
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="math2"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -793,7 +866,7 @@
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="math3"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -807,29 +880,22 @@
               size="1"
               type="text"
               class="form-control form-control-sm"
-              id="inputCity"
+              id="math4"
               aria-label="{{Add_Label_Here}}"
               value="1"
-              aria-describedby="1-helptext"
+              aria-describedby="helptext1"
             />
           </div>
           <div class="form-group col-auto">
-            <span id="1-helptext" class="col-form-label col-form-label-sm"
+            <span id="helptext1" class="col-form-label col-form-label-sm"
               >times</span
             >
           </div>
 
           <div class="col-auto">
             <div class="form-check form-group">
-              <input
-                class="form-check-input mt-2"
-                type="checkbox"
-                id="autoSizingCheck"
-              />
-              <label
-                class="form-check-label col-form-label-sm"
-                for="autoSizingCheck"
-              >
+              <input class="form-check-input mt-2" type="checkbox" id="math5" />
+              <label class="form-check-label col-form-label-sm" for="math5">
                 Sum
               </label>
             </div>
@@ -837,7 +903,7 @@
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="math6"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -847,16 +913,16 @@
           </div>
 
           <div class="form-group col-auto">
-            <span id="1-helptext" class="col-form-label col-form-label-sm"
+            <span id="helptext2" class="col-form-label col-form-label-sm"
               >to</span
             >
           </div>
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="math7"
               class="form-control form-control-sm"
-              aria-label="{{Add_Label_Here}}"
+              aria-labelledby="helptext2"
             >
               <option selected>Year</option>
               <option>...</option>
@@ -864,7 +930,7 @@
           </div>
 
           <div class="form-group col-auto">
-            <span id="1-helptext" class="col-form-label col-form-label-sm"
+            <span id="helptext3" class="col-form-label col-form-label-sm"
               >of</span
             >
           </div>
@@ -873,7 +939,7 @@
               class="custom-select"
               size="1"
               multiple
-              aria-label="{{Add_Label_Here}}"
+              aria-labelledby="helptext3"
             >
               <option selected>Selected line(s)</option>
               <option value="1">One</option>
@@ -893,7 +959,9 @@
           </div>
 
           <div class="col form-group text-right">
-            <button type="button" class="btn btn-sm btn-primary">Add</button>
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Math</span>
+            </button>
           </div>
         </section>
         <!-- ROW --------------------------------------- -->
@@ -903,7 +971,7 @@
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="control1"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -912,7 +980,9 @@
             </select>
           </div>
           <div class="col form-group text-right">
-            <button type="button" class="btn btn-sm btn-primary">Add</button>
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Control</span>
+            </button>
           </div>
         </section>
         <!-- ROW --------------------------------------- -->
@@ -927,12 +997,10 @@
                 class="form-check-input"
                 type="radio"
                 name="inlineRadioOptions"
-                id="inlineRadio1"
+                id="evaluate1"
                 value="option1"
               />
-              <label
-                class="form-check-label col-form-label-sm"
-                for="inlineRadio1"
+              <label class="form-check-label col-form-label-sm" for="evaluate1"
                 >Check</label
               >
             </div>
@@ -941,12 +1009,10 @@
                 class="form-check-input"
                 type="radio"
                 name="inlineRadioOptions"
-                id="inlineRadio2"
+                id="evaluate2"
                 value="option2"
               />
-              <label
-                class="form-check-label col-form-label-sm"
-                for="inlineRadio2"
+              <label class="form-check-label col-form-label-sm" for="evaluate2"
                 >Trigger</label
               >
             </div>
@@ -954,7 +1020,7 @@
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="evaluate3"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -965,7 +1031,7 @@
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="evaluate4"
               class="form-control form-control-sm"
               aria-label="From"
             >
@@ -974,12 +1040,12 @@
             </select>
           </div>
           <div class="form-group col-auto">
-            <label class="col-form-label col-form-label-sm">to</label>
+            <label id="" class="col-form-label col-form-label-sm">to</label>
           </div>
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="evaluate5"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -989,7 +1055,7 @@
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="evaluate6"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -1002,7 +1068,7 @@
             <input
               type="text"
               class="form-control form-control-sm"
-              id="inputCity"
+              id="evaluate7"
               aria-label="{{Add_Label_Here}}"
             />
           </div>
@@ -1013,12 +1079,10 @@
                 class="form-check-input"
                 type="radio"
                 name="inlineRadioOptions"
-                id="inlineRadio1"
+                id="evaluate9"
                 value="option1"
               />
-              <label
-                class="form-check-label col-form-label-sm"
-                for="inlineRadio1"
+              <label class="form-check-label col-form-label-sm" for="evaluate9"
                 >All</label
               >
             </div>
@@ -1027,31 +1091,31 @@
                 class="form-check-input"
                 type="radio"
                 name="inlineRadioOptions"
-                id="inlineRadio2"
+                id="evaluate10"
                 value="option2"
               />
-              <label
-                class="form-check-label col-form-label-sm"
-                for="inlineRadio2"
+              <label class="form-check-label col-form-label-sm" for="evaluate10"
                 >Any</label
               >
             </div>
           </div>
 
           <div class="col form-group text-right">
-            <button type="button" class="btn btn-sm btn-primary">Add</button>
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this evaluate</span>
+            </button>
           </div>
         </section>
 
         <!-- ROW --------------------------------------- -->
         <section class="form-row align-items-center">
           <div class="form-group col-md-1">
-            <h5 class="col-form-label col-form-label-sm">Compare</h5>
+            <h5 class="col-form-label coComparel-form-label-sm"></h5>
           </div>
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="compare1"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -1062,7 +1126,7 @@
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="compare2"
               class="form-control form-control-sm"
               aria-label="From"
             >
@@ -1076,7 +1140,7 @@
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="compare3"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -1086,7 +1150,7 @@
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="compare4"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -1096,7 +1160,7 @@
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="compare5"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -1107,7 +1171,7 @@
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="compare6"
               class="form-control form-control-sm"
               aria-label="From"
             >
@@ -1121,7 +1185,7 @@
 
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="compare7"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -1130,18 +1194,22 @@
             </select>
           </div>
           <div class="form-group col-auto">
-            <label class="col-form-label col-form-label-sm">+/-</label>
+            <label for="compare8" class="col-form-label col-form-label-sm"
+              >+/-</label
+            >
           </div>
           <div class="form-group col-auto">
             <input
               type="text"
               class="form-control form-control-sm"
-              id="inputZip"
+              id="compare8"
             />
           </div>
 
           <div class="col form-group text-right">
-            <button type="button" class="btn btn-sm btn-primary">Add</button>
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Compare</span>
+            </button>
           </div>
         </section>
         <!-- ROW --------------------------------------- -->
@@ -1151,7 +1219,7 @@
           </div>
           <div class="form-group col-auto">
             <select
-              id="inputState"
+              id="editOpt1"
               class="form-control form-control-sm"
               aria-label="{{Add_Label_Here}}"
             >
@@ -1161,7 +1229,9 @@
           </div>
 
           <div class="col form-group text-right">
-            <button type="button" class="btn btn-sm btn-primary">Add</button>
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Edit Opt</span>
+            </button>
           </div>
         </section>
         <!-- /end ROW --------------------------------------- -->
@@ -1187,33 +1257,5 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
-
-    <script>
-       var options = [];
-
-      $(".dropdown-menu label").on("click", function (event) {
-        var $target = $(event.currentTarget),
-          val = $target.attr("data-value"),
-          $inp = $target.find("input"),
-          idx;
-
-        if ((idx = options.indexOf(val)) > -1) {
-          options.splice(idx, 1);
-          setTimeout(function () {
-            $inp.prop("checked", false);
-          }, 0);
-        } else {
-          options.push(val);
-          setTimeout(function () {
-            $inp.prop("checked", true);
-          }, 0);
-        }
-
-        $(event.target).blur();
-
-        console.log(options);
-        return false;
-      }); 
-    </script>
   </body>
 </html>

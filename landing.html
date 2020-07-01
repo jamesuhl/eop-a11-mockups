@@ -89,6 +89,14 @@
   </head>
   <body>
     <!-- skip links go here -->
+    <nav class="nav-skip-links" aria-label="Skip Links">
+      <a class="sr-only focusable" id="a-skiplink-main" href="#main-content"
+        >Skip to main content</a
+      >
+      <a class="sr-only focusable" id="a-skiplink-footer" href="#site-footer"
+        >Skip to footer</a
+      >
+    </nav>
 
     <h1 class="sr-only">Rule Builder</h1>
 
@@ -101,17 +109,17 @@
             <form>
               <div class="form-row">
                 <div class="form-group col-md-4">
-                  <label for="inputState">Rule Type</label>
-                  <select id="inputState" class="form-control">
+                  <label for="ruleType1">Rule Type</label>
+                  <select id="ruleType1" class="form-control">
                     <option>Choose...</option>
                     <option selected>Lock Rules</option>
                   </select>
                 </div>
 
                 <div class="form-group col-md-4">
-                  <label for="inputState">Rule Group</label>
+                  <label for="ruleGroup">Rule Group</label>
                   <select
-                    id="inputState"
+                    id="ruleGroup"
                     class="form-control"
                     aria-describedby="totRules"
                   >
@@ -150,13 +158,13 @@
                       class="form-control"
                       placeholder="Enter Rule #"
                       aria-label="Enter Rule Number"
-                      aria-describedby="button-addon2"
+                      aria-describedby="btn-openEdit"
                     />
                     <div class="input-group-append">
                       <button
                         class="btn btn-primary"
                         type="button"
-                        id="button-addon2"
+                        id="btn-openEdit"
                       >
                         Open to edit
                       </button>
