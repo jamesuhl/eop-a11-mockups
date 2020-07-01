@@ -85,6 +85,58 @@
       .ag-row .ag-cell:last-child {
         background-color: purple !important;
       } */
+      .btn {
+        margin-bottom: 0.25rem;
+      }
+
+      @media (min-width: 768px) {
+        .btn {
+          margin-bottom: 0;
+        }
+      }
+
+  /* ---------------------------------------
+   Skip Links
+   --------------------------------------- */
+
+      .sr-only.focusable:focus {
+        position: static !important;
+        clip: auto;
+        overflow: visible;
+        height: auto;
+      }
+
+      .nav-skip-links {
+        position: fixed !important;
+        left: 20%;
+        top: 0;
+        width: 30rem;
+        border-radius: 4px;
+        z-index: 3000;
+      }
+      .nav-skip-links a {
+        display: block;
+        padding: 5px;
+        border: 1px solid #000;
+        border-radius: 4px;
+        background: #3673a3;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .nav-skip-links a:hover,
+      .nav-skip-links a:focus,
+      .nav-skip-links a:active {
+        color: #fff;
+        text-decoration: none;
+      }
+      .nav-skip-links a:hover {
+        background-color: #007bff;
+      }
+      .nav-skip-links .focusable:focus {
+        width: 30rem;
+      }
     </style>
   </head>
   <body>
@@ -129,7 +181,10 @@
                     <option>Choose...</option>
                     <option selected>All Rule Groups</option>
                     <option>Baseline Outyear Rules (BLOY)</option>
-                    <option>Data generation rules for which the order of execution is not material. (Anytime)</option>
+                    <option
+                      >Data generation rules for which the order of execution is
+                      not material. (Anytime)</option
+                    >
                   </select>
                 </div>
 
