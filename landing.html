@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <title>Rule Builder | EOP</title>
+    <style>
+      /* BS Overrides */
+      a {
+        color: #3673a3;
+      }
+      .btn-primary {
+        background-color: #3673a3;
+        border-color: #3673a3;
+      }
+      .btn-outline-primary {
+        border-color: #3673a3;
+        color: #3673a3;
+      }
+      .bg-primary {
+        background-color: #3673a3 !important;
+      }
+      .border-primary {
+        border-color: #3673a3 !important;
+      }
+      .btn-link {
+        color: #3673a3;
+      }
+      .table--landing thead tr th:nth-child(2),
+      .table--landing tbody tr td:nth-child(2) {
+        min-width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- skip links go here -->
+
+    <h1 class="sr-only">Rule Builder</h1>
+
+    <object data="header-site.html" width="100%" height="100%"></object>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <main id="main-content">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputState">Rule Type</label>
+                  <select id="inputState" class="form-control">
+                    <option>Choose...</option>
+                    <option selected>Lock Rules</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="inputState">Rule Group</label>
+                  <select
+                    id="inputState"
+                    class="form-control"
+                    aria-describedby="totRules"
+                  >
+                    <option>Choose...</option>
+                    <option selected>All Rule Groups</option>
+                  </select>
+                </div>
+
+                <div
+                  class="form-group col-md-4 d-flex align-items-end"
+                  aria-live="polite"
+                >
+                  <b id="totRules" class="form-text mb-2">1,234 Rules</b>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <button class="btn btn-outline-primary">Add new rule</button>
+
+                  <button class="btn btn-outline-primary">
+                    Generate meta data
+                  </button>
+
+                  <button class="btn btn-outline-primary">Refresh rules</button>
+
+                  <button class="btn btn-outline-primary">
+                    Reload concepts
+                  </button>
+                </div>
+
+                <div class="col-auto">
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter Rule #"
+                      aria-label="Enter Rule Number"
+                      aria-describedby="button-addon2"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-primary"
+                        type="button"
+                        id="button-addon2"
+                      >
+                        Open to edit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row align-items-center">
+                <fieldset class="col">
+                  <!-- @UI research best practice aria- or better fieldset/legend solution - and custom class to avoid bold tag -->
+                  <legend
+                    id="chckbxLabel-1"
+                    class="col-form-label float-left w-auto mr-3"
+                  >
+                    <b>Filters:</b>
+                  </legend>
+
+                  <div
+                    class="form-check form-check-inline float-left col-form-label"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1"
+                      >Inactive</label
+                    >
+                  </div>
+                  <div
+                    class="form-check form-check-inline float-left col-form-label"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox2"
+                      >MS Only</label
+                    >
+                  </div>
+                </fieldset>
+              </div>
+
+              <!-- @UI convert to CSS rule -->
+              <div
+                class="table-wrapper-scroll-y"
+                style="position: relative; max-height: 500px; overflow-y: auto;"
+              >
+                <table
+                  class="table table-sm table-striped table-hover table--landing"
+                >
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <span aria-hidden="true">#</span
+                        ><span class="sr-only">Number</span>
+                      </th>
+                      <th scope="col">Error Message</th>
+                      <th scope="col">Sal</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">On/Off</th>
+                      <th scope="col">Test</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"><a href="landing.html">9901-0</a></th>
+                      <td>Lock Transmit 0</td>
+                      <td>650</td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Edit
+                          <span class="sr-only">{{add-file-number-here}}</span>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Activate
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Test
+                          <span class="sr-only">{{add-file-number-here}}</span>
+                        </button>
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><a href="landing.html">9907-0</a></th>
+                      <td>Lock Transmit 7</td>
+                      <td>2</td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Edit
+                          <span class="sr-only">{{add-file-number-here}}</span>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Activate
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Test
+                          <span class="sr-only">{{add-file-number-here}}</span>
+                        </button>
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><a href="landing.html">9968-0</a></th>
+                      <td>Lock Transmit 0</td>
+                      <td>2</td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Edit
+                          <span class="sr-only">{{add-file-number-here}}</span>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Activate
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Test
+                          <span class="sr-only">{{add-file-number-here}}</span>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn-link border-0 bg-transparent">
+                          Publish<span class="sr-only"
+                            >{{add-file-number-here}}</span
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </main>
+        </div>
+      </div>
+    </div>
+    <!-- @Developer: replace object tag with proper include file -->
+    <object data="footer-site.html" width="100%"></object>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

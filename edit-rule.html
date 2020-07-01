@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <title>Rule Builder | EOP</title>
+
+    <style>
+      /* BS Overrides */
+      a {
+        color: #3673a3;
+      }
+      .btn-primary {
+        background-color: #3673a3;
+        border-color: #3673a3;
+      }
+      .btn-outline-primary {
+        border-color: #3673a3;
+        color: #3673a3;
+      }
+      .bg-primary {
+        background-color: #3673a3 !important;
+      }
+      .border-primary {
+        border-color: #3673a3 !important;
+      }
+      .btn-link {
+        color: #3673a3;
+      }
+
+      .btn-outline-primary.bg-white:hover {
+        background-color: #007bff !important;
+      }
+      .table-rule-definitions tbody tr td:nth-child(3) {
+        width: 100%;
+      }
+      .table-rule-definitions tbody tr td:nth-last-child(2) {
+        min-width: 5rem;
+      }
+      .table-rule-definitions tbody tr td:last-child {
+        min-width: 9rem;
+        text-align: right;
+      }
+      .icon {
+        background-repeat: no-repeat;
+        background-position: center;
+        min-width: 1rem;
+        min-height: 0.75rem;
+        border: none;
+        background-color: transparent;
+        line-height: 0;
+      }
+      .icon-arrow-up {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.347' viewBox='0 0 12 10.347'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M31.575,42.3H28.693a.719.719,0,0,1-.72-.72v-2.9H24.857a.721.721,0,0,1-.51-1.231l5.278-5.284a.721.721,0,0,1,1.021,0l5.278,5.284a.721.721,0,0,1-.51,1.231H32.3v2.9A.719.719,0,0,1,31.575,42.3Z' transform='translate(-24.134 -31.95)'/%3E%3C/svg%3E");
+      }
+      .icon-arrow-down {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.349' viewBox='0 0 12 10.349'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M28.791,35h2.883a.719.719,0,0,1,.721.721v2.9h3.117a.721.721,0,0,1,.51,1.231l-5.279,5.285a.721.721,0,0,1-1.021,0l-5.276-5.285a.722.722,0,0,1,.51-1.231h3.114v-2.9A.719.719,0,0,1,28.791,35Z' transform='translate(-24.234 -35)'/%3E%3C/svg%3E");
+      }
+
+      /* @UI remove unneeded rules here */
+      .list-rule-definitions,
+      .table-rule-definitions {
+        background-color: #eee;
+      }
+      .list-rule-definitions li {
+        border-bottom: 2px solid #fff;
+        padding: 0.25rem;
+        cursor: grabbing;
+      }
+      .list-rule-definitions li:hover {
+        outline: 1px dotted #007bff;
+      }
+
+      .list-rule-definitions li:first-child .icon-arrow-up,
+      .table-rule-definitions tbody tr:first-child .icon-arrow-up {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.347' viewBox='0 0 12 10.347'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%23ccc;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M31.575,42.3H28.693a.719.719,0,0,1-.72-.72v-2.9H24.857a.721.721,0,0,1-.51-1.231l5.278-5.284a.721.721,0,0,1,1.021,0l5.278,5.284a.721.721,0,0,1-.51,1.231H32.3v2.9A.719.719,0,0,1,31.575,42.3Z' transform='translate(-24.134 -31.95)'/%3E%3C/svg%3E");
+      }
+      .list-rule-definitions li:last-child .icon-arrow-down,
+      .table-rule-definitions tbody tr:last-child .icon-arrow-down {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.349' viewBox='0 0 12 10.349'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%23ccc;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M28.791,35h2.883a.719.719,0,0,1,.721.721v2.9h3.117a.721.721,0,0,1,.51,1.231l-5.279,5.285a.721.721,0,0,1-1.021,0l-5.276-5.285a.722.722,0,0,1,.51-1.231h3.114v-2.9A.719.719,0,0,1,28.791,35Z' transform='translate(-24.234 -35)'/%3E%3C/svg%3E");
+      }
+      .rule-links a {
+        text-decoration: underline;
+      }
+      .rule-links .active {
+        color: #000;
+        text-decoration: none;
+      }
+
+      .dropdown-item {
+        position: relative;
+        padding: 0.25rem 1.5rem 0.25rem 0.5rem;
+      }
+      .dropdown-item input {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- skip links go here -->
+
+    <h1 class="sr-only">Edit Rule | Rule Builder</h1>
+
+    <!-- <object data="header-site.html" width="100%"></object>  -->
+
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html">
+        <img
+          src="assets/images/seal-eop--sm.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="seal of the Executive Office of the President"
+          loading="lazy"
+        />
+        Rule Builder
+      </a>
+
+      <div>
+        <small class="navbar-text mr-4 text-right">
+          Welcome, Mark Smith<br />
+          <a href="#">Sign out</a>
+        </small>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Rule Builder Landing <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Some external link here</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Some external link here</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Navbar text with an inline element
+        </span>
+      </div>
+    </nav>
+    <div class="sticky-top">
+      <div class="alert alert-secondary rounded-0" role="alert">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              9901-0 Row 4 Saved
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <header>
+            <h2>Edit Rule - 9901-0</h2>
+          </header>
+        </div>
+        <div class="col">
+          <nav aria-label="Rule Links" class="text-right rule-links">
+            <a href="#" class="mr-3">View All Rules</a>
+            <a href="#" class="mr-3 active" aria-current="page">Edit Rule</a>
+            <a href="#" class="mr-3">Test Rule</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <main id="main-content">
+            <div class="form-row align-items-end">
+              <div class="form-group col-2">
+                <label for="ruleNum"
+                  >Rule Number
+                  <span class="sr-only"
+                    >(Enter digits before hyphen)</span
+                  ></label
+                >
+                <div class="input-group">
+                  <input type="text" class="form-control w-50" id="ruleNum" />
+                  <label class="col-form-label" for="ruleNum"
+                    ><span aria-hidden="true">-</span
+                    ><span class="sr-only"
+                      >Rule Number (Enter digits after hyphen)</span
+                    ></label
+                  >
+                  <input type="text" class="form-control" id="inputCity" />
+                </div>
+              </div>
+
+              <div class="form-group col">
+                <label class="col-form-label">DATAGEN</label>
+              </div>
+
+              <div class="form-group col">
+                <label for="a11-ref-1"
+                  >A-11&nbsp;Reference
+                  <span class="sr-only">(Enter first part)</span></label
+                >
+                <input type="text" class="form-control" id="a11-ref-1" />
+              </div>
+              <div class="form-group col-auto">
+                <label for="a11-ref-2"
+                  ><span class="sr-only"
+                    >A-11&nbsp;Reference (Enter second part)</span
+                  ></label
+                >
+                <input type="text" class="form-control w-50" id="a11-ref-2" />
+              </div>
+              <div class="form-group col">
+                <label for="inputZip">Severity</label>
+                <input type="text" class="form-control" id="inputZip" />
+              </div>
+
+              <div class="form-group col text-right">
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseExample"
+                  aria-expanded="false"
+                  aria-controls="collapseExample"
+                >
+                  Clone
+                </button>
+              </div>
+            </div>
+
+            <div class="collapse mb-3" id="collapseExample">
+              <div class="card card-body bg-light">
+                <!-- ROW --------------------------------------- -->
+                <section class="form-row align-items-center no-gutters">
+                  <h5 class="col-form-label col-form-label-sm mr-3">
+                    Clone Options
+                  </h5>
+
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option2"
+                    />
+                    <label
+                      class="form-check-label col-form-label-sm"
+                      for="inlineRadio2"
+                      >All</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option2"
+                    />
+                    <label
+                      class="form-check-label col-form-label-sm"
+                      for="inlineRadio2"
+                      >A-11 Refs</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option2"
+                    />
+                    <label
+                      class="form-check-label col-form-label-sm"
+                      for="inlineRadio2"
+                      >Description</label
+                    >
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option2"
+                    />
+                    <label
+                      class="form-check-label col-form-label-sm"
+                      for="inlineRadio2"
+                      >Comments</label
+                    >
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option2"
+                    />
+                    <label
+                      class="form-check-label col-form-label-sm"
+                      for="inlineRadio2"
+                      >Groups</label
+                    >
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option2"
+                    />
+                    <label
+                      class="form-check-label col-form-label-sm"
+                      for="inlineRadio2"
+                      >Definition</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option2"
+                    />
+                    <label
+                      class="form-check-label col-form-label-sm"
+                      for="inlineRadio2"
+                      >Severity</label
+                    >
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <label
+                      class="form-check-label col-form-label-sm mr-2"
+                      for="inlineRadio2"
+                      >From rule</label
+                    >
+                    <div class="input-group" style="max-width: 140px;">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm w-50"
+                        id="ruleNum"
+                      />
+                      <label class="col-form-label" for="ruleNum"
+                        ><span aria-hidden="true">-</span
+                        ><span class="sr-only"
+                          >Rule Number (Enter digits after hyphen)</span
+                        ></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="inputCity"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col text-right">
+                    <button type="button" class="btn btn-sm btn-primary">
+                      Clone rule
+                    </button>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col">
+                <label for="validationTextarea">Description</label>
+                <textarea
+                  class="form-control"
+                  id="validationTextarea"
+                ></textarea>
+              </div>
+              <div class="form-group col">
+                <label for="validationTextarea">Comments</label>
+                <textarea
+                  class="form-control"
+                  id="validationTextarea"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-auto">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Group
+                  </button>
+                  <div class="dropdown-menu">
+                    <label class="dropdown-item" data-value="1"
+                      >Option 1
+                      <input id="X" class="" type="checkbox" data-value="1"
+                    /></label>
+                    <!--   <div class="dropdown-item"><label for="WW">Another action</label><input id="WW" type="checkbox"></div> -->
+                    <label class="dropdown-item" data-value="2"
+                      >Option 2 <input type="checkbox" data-value="2"
+                    /></label>
+                    <div class="dropdown-divider"></div>
+                    <label class="dropdown-item" data-value="3"
+                      >Option 3 <em>(Separated link)</em>
+                      <input type="checkbox" data-value="3"
+                    /></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-5">
+                <!-- @UI: create a custom class here -->
+                <div
+                  class="alert alert-primary alert-dismissible rounded-pill fade show py-1 bg-primary border border-primary"
+                  role="alert"
+                >
+                  <span class="text-white"
+                    >Edit rule has an associated excel report</span
+                  >
+                  <button
+                    type="button"
+                    class="close py-0 text-white"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <table class="table table-sm table-hover table-rule-definitions">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span class="sr-only">Sorting controls</span>
+                  </th>
+                  <th scope="col">
+                    <span class="sr-only">Sorting order</span>
+                  </th>
+                  <th scope="col">Rule Definition</th>
+                  <th scope="col"><span class="sr-only">More info</span></th>
+                  <th scope="col"><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="row no-gutters" style="max-width: 1.2rem;">
+                      <button class="col-auto icon icon-arrow-up"></button>
+                      <button class="col-auto icon icon-arrow-down"></button>
+                    </div>
+                  </td>
+                  <td><span>1</span></td>
+                  <td>Transmit [TRANSMIT] equal "Enacted/requested [0]"</td>
+                  <td>151 lines</td>
+                  <td>
+                    <button class="btn btn-link">Edit</button
+                    ><button class="btn btn-link">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="row no-gutters" style="max-width: 1.2rem;">
+                      <button class="col-auto icon icon-arrow-up"></button>
+                      <button class="col-auto icon icon-arrow-down"></button>
+                    </div>
+                  </td>
+                  <td><span>2</span></td>
+                  <td>Transmit [TRANSMIT] equal "Enacted/requested [0]"</td>
+                  <td>151 lines</td>
+                  <td>
+                    <button class="btn btn-link">Edit</button
+                    ><button class="btn btn-link">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="row no-gutters" style="max-width: 1.2rem;">
+                      <button class="col-auto icon icon-arrow-up"></button>
+                      <button class="col-auto icon icon-arrow-down"></button>
+                    </div>
+                  </td>
+                  <td><span>3</span></td>
+                  <td>
+                    <div class="row">
+                      <div class="form-group col-auto">
+                        <select
+                          id="inputState"
+                          class="form-control"
+                          aria-label="{{Add_Label_Here}}"
+                        >
+                          <option selected>Lock amounts</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-auto">
+                        <select
+                          id="inputState"
+                          class="form-control"
+                          aria-label="{{Add_Label_Here}}"
+                        >
+                          <option selected>PY-1</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-auto">
+                        <span id="1-helptext" class="col-form-label">to</span>
+                      </div>
+
+                      <div class="form-group col-auto">
+                        <select
+                          id="inputState"
+                          class="form-control"
+                          aria-label="{{Add_Label_Here}}"
+                        >
+                          <option selected>BY+9</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+                    </div>
+                  </td>
+                  <td>151 lines</td>
+                  <td>
+                    <div class="d-flex">
+                      <button class="btn btn-primary mr-1">Save</button>
+                      <button class="btn btn-outline-primary bg-white mr-1">
+                        Cancel
+                      </button>
+                      <button class="btn btn-link">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="row no-gutters" style="max-width: 1.2rem;">
+                      <button class="col-auto icon icon-arrow-up"></button>
+                      <button class="col-auto icon icon-arrow-down"></button>
+                    </div>
+                  </td>
+                  <td><span>4</span></td>
+                  <td>Transmit [TRANSMIT] equal "Enacted/requested [0]"</td>
+                  <td>151 lines</td>
+                  <td>
+                    <button class="btn btn-link">Edit</button
+                    ><button class="btn btn-link">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </main>
+        </div>
+      </div>
+    </div>
+    <!-- /end container -->
+
+    <div class="sticky-bottom shadow">
+      <div class="container">
+        <div class="form-row align-items-center">
+          <div class="form-group">
+            <button class="btn btn-primary">
+              Save and publish for testing
+            </button>
+            <button class="btn btn-outline-primary">Save</button>
+            <button class="btn btn-outline-primary">Publish</button>
+            <button class="btn btn-outline-primary">Unpublish</button>
+            <button class="btn btn-outline-primary">Restore Def</button>
+          </div>
+
+          <div class="col text-right">
+            <p>
+              <small class="text-muted"
+                >Last published: Mark Smith 6/19/2020 17:23:05<br />
+                Last updated: Mark Smith 6/19/2020 17:05:45</small
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- ROW 1 --------------------------------------- -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Account</h5>
+          </div>
+          <div class="form-group col-md-2">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select concept</option>
+              <option>{{concept_1}}</option>
+              <option>{{concept_2}}</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select id="inputState" class="form-control form-control-sm">
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="inputCity"
+              aria-label="{{Add_Label_Here}}"
+            />
+          </div>
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </section>
+        <!-- ROW --------------------------------------- -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Line</h5>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select concept</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="inputCity"
+              aria-label="{{Add_Label_Here}}"
+            />
+          </div>
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </section>
+
+        <!-- ROW --------------------------------------- -->
+        <section class="form-row align-items-center no-gutters">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">
+              Math
+            </h5>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <!-- @UI disabled attr here makes it not selectable but user can not clear after making selection -->
+              <option selected>Operation</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Var</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <label class="col-form-label col-form-label-sm">Starting in</label>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Col</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <!--@UI @Developer: size="1" is unique to this input -->
+            <input
+              size="1"
+              type="text"
+              class="form-control form-control-sm"
+              id="inputCity"
+              aria-label="{{Add_Label_Here}}"
+              value="1"
+              aria-describedby="1-helptext"
+            />
+          </div>
+          <div class="form-group col-auto">
+            <span id="1-helptext" class="col-form-label col-form-label-sm"
+              >times</span
+            >
+          </div>
+
+          <div class="col-auto">
+            <div class="form-check form-group">
+              <input
+                class="form-check-input mt-2"
+                type="checkbox"
+                id="autoSizingCheck"
+              />
+              <label
+                class="form-check-label col-form-label-sm"
+                for="autoSizingCheck"
+              >
+                Sum
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Year</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <span id="1-helptext" class="col-form-label col-form-label-sm"
+              >to</span
+            >
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Year</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <span id="1-helptext" class="col-form-label col-form-label-sm"
+              >of</span
+            >
+          </div>
+          <div class="form-group col-auto">
+            <select
+              class="custom-select"
+              size="1"
+              multiple
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Selected line(s)</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Option</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </section>
+        <!-- ROW --------------------------------------- -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Control</h5>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select value</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </section>
+        <!-- ROW --------------------------------------- -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Evaluate</h5>
+          </div>
+
+          <div class="form-group col-auto">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+              />
+              <label
+                class="form-check-label col-form-label-sm"
+                for="inlineRadio1"
+                >Check</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="option2"
+              />
+              <label
+                class="form-check-label col-form-label-sm"
+                for="inlineRadio2"
+                >Trigger</label
+              >
+            </div>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="From"
+            >
+              <option selected>From</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <label class="col-form-label col-form-label-sm">to</label>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>To</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="inputCity"
+              aria-label="{{Add_Label_Here}}"
+            />
+          </div>
+
+          <div class="form-group col-auto">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+              />
+              <label
+                class="form-check-label col-form-label-sm"
+                for="inlineRadio1"
+                >All</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="option2"
+              />
+              <label
+                class="form-check-label col-form-label-sm"
+                for="inlineRadio2"
+                >Any</label
+              >
+            </div>
+          </div>
+
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </section>
+
+        <!-- ROW --------------------------------------- -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Compare</h5>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="From"
+            >
+              <option selected>From</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <label class="col-form-label col-form-label-sm">to</label>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>To</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="From"
+            >
+              <option selected>From</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <label class="col-form-label col-form-label-sm">to</label>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>To</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <label class="col-form-label col-form-label-sm">+/-</label>
+          </div>
+          <div class="form-group col-auto">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="inputZip"
+            />
+          </div>
+
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </section>
+        <!-- ROW --------------------------------------- -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Edit Opt</h5>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="inputState"
+              class="form-control form-control-sm"
+              aria-label="{{Add_Label_Here}}"
+            >
+              <option selected>Select value</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </section>
+        <!-- /end ROW --------------------------------------- -->
+      </div>
+
+      <object data="footer-site.html" width="100%"></object>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+       var options = [];
+
+      $(".dropdown-menu label").on("click", function (event) {
+        var $target = $(event.currentTarget),
+          val = $target.attr("data-value"),
+          $inp = $target.find("input"),
+          idx;
+
+        if ((idx = options.indexOf(val)) > -1) {
+          options.splice(idx, 1);
+          setTimeout(function () {
+            $inp.prop("checked", false);
+          }, 0);
+        } else {
+          options.push(val);
+          setTimeout(function () {
+            $inp.prop("checked", true);
+          }, 0);
+        }
+
+        $(event.target).blur();
+
+        console.log(options);
+        return false;
+      }); 
+    </script>
+  </body>
+</html>

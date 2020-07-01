@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <title>Create Rule | Rule Builder | EOP</title>
+    <style>
+      /* BS Overrides */
+      a {
+        color: #3673a3;
+      }
+      .btn-primary {
+        background-color: #3673a3;
+        border-color: #3673a3;
+      }
+      .btn-outline-primary {
+        border-color: #3673a3;
+        color: #3673a3;
+      }
+      .bg-primary {
+        background-color: #3673a3 !important;
+      }
+      .border-primary {
+        border-color: #3673a3 !important;
+      }
+      .btn-link {
+        color: #3673a3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- skip links go here -->
+
+    <h1 class="sr-only">Rule Builder</h1>
+
+    <object data="header-site.html" width="100%" height="100%"></object>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <main id="main-content"></main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function handleDragStart(e) {
+        this.style.opacity = "0.4"; // this / e.target is the source node.
+      }
+
+      function handleDragOver(e) {
+        if (e.preventDefault) {
+          e.preventDefault(); // Necessary. Allows us to drop.
+        }
+
+        e.dataTransfer.dropEffect = "move"; // See the section on the DataTransfer object.
+
+        return false;
+      }
+
+      function handleDragEnter(e) {
+        // this / e.target is the current hover target.
+        this.classList.add("over");
+      }
+
+      function handleDragLeave(e) {
+        this.classList.remove("over"); // this / e.target is previous target element.
+      }
+
+      var cols = document.querySelectorAll("#columns .column");
+      [].forEach.call(cols, function (col) {
+        col.addEventListener("dragstart", handleDragStart, false);
+        col.addEventListener("dragenter", handleDragEnter, false);
+        col.addEventListener("dragover", handleDragOver, false);
+        col.addEventListener("dragleave", handleDragLeave, false);
+      });
+
+      function handleDrop(e) {
+        // this / e.target is current target element.
+
+        if (e.stopPropagation) {
+          e.stopPropagation(); // stops the browser from redirecting.
+        }
+
+        // See the section on the DataTransfer object.
+
+        return false;
+      }
+
+      function handleDragEnd(e) {
+        // this/e.target is the source node.
+
+        [].forEach.call(cols, function (col) {
+          col.classList.remove("over");
+        });
+      }
+
+      var cols = document.querySelectorAll("#columns .column");
+      [].forEach.call(cols, function (col) {
+        col.addEventListener("dragstart", handleDragStart, false);
+        col.addEventListener("dragenter", handleDragEnter, false);
+        col.addEventListener("dragover", handleDragOver, false);
+        col.addEventListener("dragleave", handleDragLeave, false);
+        col.addEventListener("drop", handleDrop, false);
+        col.addEventListener("dragend", handleDragEnd, false);
+      });
+      //--------------------------------------------
+      var dragSrcEl = null;
+
+      function handleDragStart(e) {
+        // Target (this) element is the source node.
+        this.style.opacity = "0.4";
+
+        dragSrcEl = this;
+
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/html", this.innerHTML);
+      }
+
+      function handleDrop(e) {
+        // this/e.target is current target element.
+
+        if (e.stopPropagation) {
+          e.stopPropagation(); // Stops some browsers from redirecting.
+        }
+
+        // Don't do anything if dropping the same column we're dragging.
+        if (dragSrcEl != this) {
+          // Set the source column's HTML to the HTML of the column we dropped on.
+          dragSrcEl.innerHTML = this.innerHTML;
+          this.innerHTML = e.dataTransfer.getData("text/html");
+        }
+
+        return false;
+      }
+    </script>
+  </body>
+</html>
