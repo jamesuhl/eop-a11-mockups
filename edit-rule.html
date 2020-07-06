@@ -111,10 +111,12 @@
         padding-left: 1.5rem;
       }
 
-      /* @UI remove unneeded rules here */
-      .list-rule-definitions,
-      .table-rule-definitions {
-        background-color: #eee;
+      .table-rule-definitions thead tr th {
+        border: none;
+      }
+      .table-rule-definitions thead th {
+        font-weight: normal;
+        font-size: 0.8rem;
       }
       .list-rule-definitions li {
         border-bottom: 2px solid #fff;
@@ -125,11 +127,10 @@
         outline: 1px dotted #007bff;
       }
 
-      .list-rule-definitions li:first-child .icon-arrow-up,
       .table-rule-definitions tbody tr:first-child .icon-arrow-up {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.347' viewBox='0 0 12 10.347'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%23ccc;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M31.575,42.3H28.693a.719.719,0,0,1-.72-.72v-2.9H24.857a.721.721,0,0,1-.51-1.231l5.278-5.284a.721.721,0,0,1,1.021,0l5.278,5.284a.721.721,0,0,1-.51,1.231H32.3v2.9A.719.719,0,0,1,31.575,42.3Z' transform='translate(-24.134 -31.95)'/%3E%3C/svg%3E");
       }
-      .list-rule-definitions li:last-child .icon-arrow-down,
+
       .table-rule-definitions tbody tr:last-child .icon-arrow-down {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.349' viewBox='0 0 12 10.349'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%23ccc;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M28.791,35h2.883a.719.719,0,0,1,.721.721v2.9h3.117a.721.721,0,0,1,.51,1.231l-5.279,5.285a.721.721,0,0,1-1.021,0l-5.276-5.285a.722.722,0,0,1,.51-1.231h3.114v-2.9A.719.719,0,0,1,28.791,35Z' transform='translate(-24.234 -35)'/%3E%3C/svg%3E");
       }
@@ -162,7 +163,7 @@
         }
       }
 
-  /* ---------------------------------------
+      /* ---------------------------------------
    Skip Links
    --------------------------------------- */
 
@@ -283,25 +284,26 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <header>
-            <h2>Edit Rule - 9901-0</h2>
-          </header>
+    <main id="main-content">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <header>
+              <h2>Edit Rule - 9901-0</h2>
+            </header>
+          </div>
+          <div class="col">
+            <nav aria-label="Rule Links" class="text-right rule-links">
+              <a href="#" class="mr-3">View All Rules</a>
+              <a href="#" class="mr-3 active" aria-current="page">Edit Rule</a>
+              <a href="#" class="mr-3">Test Rule</a>
+            </nav>
+          </div>
         </div>
-        <div class="col">
-          <nav aria-label="Rule Links" class="text-right rule-links">
-            <a href="#" class="mr-3">View All Rules</a>
-            <a href="#" class="mr-3 active" aria-current="page">Edit Rule</a>
-            <a href="#" class="mr-3">Test Rule</a>
-          </nav>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col">
-          <main id="main-content">
+        <div class="row">
+          <div class="col">
+            <!-- <main id="main-content"> -->
             <div class="form-row align-items-end">
               <div class="form-group col-2">
                 <label for="ruleNum"
@@ -385,6 +387,7 @@
                       name="cloneOptions"
                       id="cloneRadio1"
                       value="option2"
+                      checked
                     />
                     <label
                       class="form-check-label col-form-label-sm"
@@ -486,15 +489,15 @@
                       for="cloneFromRule1"
                       >From rule</label
                     >
-                    <div class="input-group" style="max-width: 140px;">
+                    <div class="input-group" style="max-width: 120px;">
                       <input
                         type="text"
-                        class="form-control form-control-sm w-50"
+                        class="form-control form-control-sm w-50 mr-1"
                         id="cloneFromRule1"
                       />
                       <label class="col-form-label" for="cloneFromRule2"
-                        ><span aria-hidden="true">-</span
-                        ><span class="sr-only"
+                        ><!-- <span aria-hidden="true">-</span
+                      > --><span class="sr-only"
                           >Rule Number (Enter digits after hyphen)</span
                         ></label
                       >
@@ -669,750 +672,753 @@
                 </section>
               </div>
             </div>
-            <div class="table-wrapper">
-              <table class="table table-sm table-hover table-rule-definitions">
-                <thead>
-                  <tr>
-                    <th scope="col">
-                      <span class="sr-only">Sorting controls</span>
-                    </th>
-                    <th scope="col">
-                      <span class="sr-only">Sorting order</span>
-                    </th>
-                    <th scope="col">Rule Definition</th>
-                    <th scope="col"><span class="sr-only">More info</span></th>
-                    <th scope="col"><span class="sr-only">Actions</span></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="row no-gutters row-sort-btns">
-                        <button class="col-auto icon icon-arrow-up">
-                          <span class="sr-only">Move this row up</span>
-                        </button>
-                        <button class="col-auto icon icon-arrow-down">
-                          <span class="sr-only">Move this row down</span>
-                        </button>
-                      </div>
-                    </td>
-                    <td><span>1</span></td>
-                    <td>Transmit [TRANSMIT] equal "Enacted/requested [0]"</td>
-                    <td>
-                      <!-- @Developer: repeat this 'drop-up' code for each value this column -->
-                      <div class="btn-group dropup">
-                        <button
-                          type="button"
-                          class="btn btn-link"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                        >
-                          150 lines
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <div
-                            tabindex="0"
-                            class="dropdown-item"
-                            style="min-width: 32rem; white-space: normal;"
-                          >
-                            9999999, 8888888, 7777777, 6666666, 9999999,
-                            8888888, 7777777, 6666666&hellip;
-                          </div>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">View All</a>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <button class="btn btn-link">Edit</button
-                      ><button
-                        class="btn btn-link"
-                        data-toggle="modal"
-                        data-target="#deleteModal"
-                        data-whatever="Transmit [TRANSMIT] equal..."
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="row no-gutters row-sort-btns">
-                        <button class="col-auto icon icon-arrow-up">
-                          <span class="sr-only">Move this row up</span>
-                        </button>
-                        <button class="col-auto icon icon-arrow-down">
-                          <span class="sr-only">Move this row down</span>
-                        </button>
-                      </div>
-                    </td>
-                    <td><span>2</span></td>
-                    <td>Transmit [TRANSMIT] equal "Enacted/requested [0]"</td>
-                    <td>151 lines</td>
-                    <td>
-                      <button class="btn btn-link">Edit</button
-                      ><button
-                        class="btn btn-link"
-                        data-toggle="modal"
-                        data-target="#deleteModal"
-                        data-whatever="Transmit [TRANSMIT] equal..."
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="row no-gutters row-sort-btns">
-                        <button class="col-auto icon icon-arrow-up">
-                          <span class="sr-only">Move this row up</span>
-                        </button>
-                        <button class="col-auto icon icon-arrow-down">
-                          <span class="sr-only">Move this row down</span>
-                        </button>
-                      </div>
-                    </td>
-                    <td><span>3</span></td>
-                    <td>
-                      <div class="row">
-                        <div class="form-group col-auto">
-                          <select
-                            id="select0"
-                            class="form-control"
-                            aria-label="{-Add_Label_Here-}"
-                          >
-                            <option selected>Lock amounts</option>
-                            <option>...</option>
-                          </select>
-                        </div>
-
-                        <div class="form-group col-auto">
-                          <select
-                            id="select1"
-                            class="form-control"
-                            aria-label="{-Add_Label_Here-}"
-                          >
-                            <option selected>PY-1</option>
-                            <option>...</option>
-                          </select>
-                        </div>
-
-                        <div class="form-group col-auto">
-                          <span id="1-helptext" class="col-form-label">to</span>
-                        </div>
-
-                        <div class="form-group col-auto">
-                          <select
-                            id="select2"
-                            class="form-control"
-                            aria-label="{-Add_Label_Here-}"
-                          >
-                            <option selected>BY+9</option>
-                            <option>...</option>
-                          </select>
-                        </div>
-                      </div>
-                    </td>
-                    <td>151 lines</td>
-                    <td>
-                      <div class="d-flex">
-                        <button class="btn btn-primary mr-1">Save</button>
-                        <button class="btn btn-outline-primary bg-white mr-1">
-                          Cancel
-                        </button>
-                        <button
-                          class="btn btn-link"
-                          data-toggle="modal"
-                          data-target="#deleteModal"
-                          data-whatever="Lock amounts..."
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <div class="row no-gutters row-sort-btns">
-                        <button class="col-auto icon icon-arrow-up">
-                          <span class="sr-only">Move this row up</span>
-                        </button>
-                        <button class="col-auto icon icon-arrow-down">
-                          <span class="sr-only">Move this row down</span>
-                        </button>
-                      </div>
-                    </td>
-                    <td><span>4</span></td>
-                    <td>Transmit [TRANSMIT] equal "Enacted/requested [0]"</td>
-                    <td>151 lines</td>
-                    <td>
-                      <button class="btn btn-link">Edit</button
-                      ><button
-                        class="btn btn-link"
-                        data-toggle="modal"
-                        data-target="#deleteModal"
-                        data-whatever="Transmit [TRANSMIT] equal..."
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- ROW 1  -->
-            <section class="form-row align-items-center">
-              <div class="form-group col-md-1">
-                <h5 class="col-form-label col-form-label-sm">Account</h5>
-              </div>
-              <!-- @Developer: we need to add screen reader labels to these fields: {-Add_Label_Here-} -->
-              <div class="form-group col-md-2">
-                <select
-                  class="form-control form-control-sm"
-                  aria-label="account1"
-                  ="{-Add_Label_Here-}"
-                >
-                  <option selected>Select concept</option>
-                  <option>{{concept_1}}</option>
-                  <option>{{concept_2}}</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <select id="account2" class="form-control form-control-sm">
-                  <option selected>Select</option>
-                  <option>equal</option>
-                  <option>not equal</option>
-                  <option>in</option>
-                  <option>not in</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <input
-                  type="text"
-                  class="form-control form-control-sm"
-                  id="account3"
-                  aria-label="{-Add_Label_Here-}"
-                />
-              </div>
-              <div class="col form-group text-right">
-                <button type="button" class="btn btn-sm btn-primary">
-                  Add <span class="sr-only">this Account</span>
-                </button>
-              </div>
-            </section>
-            <!-- ROW  -->
-            <section class="form-row align-items-center">
-              <div class="form-group col-md-1">
-                <h5 class="col-form-label col-form-label-sm">Line</h5>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="line1"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select concept</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="line2"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <input
-                  type="text"
-                  class="form-control form-control-sm"
-                  id="line3"
-                  aria-label="{-Add_Label_Here-}"
-                />
-              </div>
-              <div class="col form-group text-right">
-                <button type="button" class="btn btn-sm btn-primary">
-                  Add <span class="sr-only">this line</span>
-                </button>
-              </div>
-            </section>
-
-            <!-- ROW  -->
-            <section
-              class="form-row form-row--compressed align-items-center no-gutters"
-            >
-              <div class="form-group col-md-1">
-                <h5 class="col-form-label col-form-label-sm">
-                  Math
-                </h5>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="math1"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option>Operation</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="math2"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Var</option>
-                  <option>Total-1</option>
-                  <option>Total-2</option>
-                  <option>Total-3</option>
-                </select>
-              </div>
-
-              <div class="form-group col-auto">
-                <label class="col-form-label col-form-label-sm"
-                  >Starting in</label
-                >
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="math3"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Col</option>
-                  <option>col 1</option>
-                  <option>col 2</option>
-                  <option>col 3</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <!--@UI: size="1" is unique to this input -->
-                <input
-                  size="1"
-                  type="text"
-                  class="form-control form-control-sm"
-                  id="math4"
-                  aria-label="{-Add_Label_Here-}"
-                  value="1"
-                  aria-describedby="helptext1"
-                />
-              </div>
-              <div class="form-group col-auto">
-                <span id="helptext1" class="col-form-label col-form-label-sm"
-                  >times</span
-                >
-              </div>
-
-              <div class="col-auto">
-                <div class="form-check form-group">
-                  <input
-                    class="form-check-input mt-2"
-                    type="checkbox"
-                    id="math5"
-                  />
-                  <label class="form-check-label col-form-label-sm" for="math5">
-                    Sum
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="math6"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Year</option>
-                  <option>PY-1</option>
-                  <option>PY</option>
-                  <option>CY</option>
-                  <option>BY+9</option>
-                </select>
-              </div>
-
-              <div class="form-group col-auto">
-                <span id="helptext2" class="col-form-label col-form-label-sm"
-                  >to</span
-                >
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="math7"
-                  class="form-control form-control-sm"
-                  aria-labelledby="helptext2"
-                >
-                  <option selected>Year</option>
-                  <option>PY-1</option>
-                  <option>PY</option>
-                  <option>CY</option>
-                  <option>BY+9</option>
-                </select>
-              </div>
-
-              <div class="form-group col-auto">
-                <span id="helptext3" class="col-form-label col-form-label-sm"
-                  >of</span
-                >
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  class="custom-select"
-                  size="1"
-                  multiple
-                  aria-labelledby="helptext3"
-                >
-                  <option selected>Selected line(s)</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="select3"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Option</option>
-                  <option>(positive amts only)</option>
-                  <option>(negative amts only)</option>
-                </select>
-              </div>
-
-              <div class="col form-group text-right">
-                <button type="button" class="btn btn-sm btn-primary">
-                  Add <span class="sr-only">this Math</span>
-                </button>
-              </div>
-            </section>
-            <!-- ROW  -->
-            <section class="form-row align-items-center">
-              <div class="form-group col-md-1">
-                <h5 class="col-form-label col-form-label-sm">Control</h5>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="control1"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select value</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="col form-group text-right">
-                <button type="button" class="btn btn-sm btn-primary">
-                  Add <span class="sr-only">this Control</span>
-                </button>
-              </div>
-            </section>
-            <!-- ROW  -->
-            <section class="form-row align-items-center">
-              <div class="form-group col-md-1">
-                <h5 class="col-form-label col-form-label-sm">Evaluate</h5>
-              </div>
-
-              <div class="form-group col-auto">
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="evaluate1"
-                    value="option1"
-                  />
-                  <label
-                    class="form-check-label col-form-label-sm"
-                    for="evaluate1"
-                    >Check</label
-                  >
-                </div>
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="evaluate2"
-                    value="option2"
-                  />
-                  <label
-                    class="form-check-label col-form-label-sm"
-                    for="evaluate2"
-                    >Trigger</label
-                  >
-                </div>
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="evaluate3"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select</option>
-                  <option>...</option>
-                </select>
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="evaluate4"
-                  class="form-control form-control-sm"
-                  aria-label="From"
-                >
-                  <option selected>From</option>
-                  <option>col 1</option>
-                  <option>col 2</option>
-                  <option>col 10</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <label for="evaluate5" class="col-form-label col-form-label-sm"
-                  >to</label
-                >
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="evaluate5"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>To</option>
-                  <option>col 1</option>
-                  <option>col 2</option>
-                  <option>col 10</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="evaluate6"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select</option>
-                  <option>equal</option>
-                  <option>not equal</option>
-                  <option>greater than or equal</option>
-                  <option>does not have comment</option>
-                </select>
-              </div>
-
-              <div class="form-group col-auto">
-                <input
-                  type="text"
-                  class="form-control form-control-sm"
-                  id="evaluate7"
-                  aria-label="{-Add_Label_Here-}"
-                />
-              </div>
-
-              <div class="form-group col-auto">
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="evaluate9"
-                    value="option1"
-                  />
-                  <label
-                    class="form-check-label col-form-label-sm"
-                    for="evaluate9"
-                    >All</label
-                  >
-                </div>
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="evaluate10"
-                    value="option2"
-                  />
-                  <label
-                    class="form-check-label col-form-label-sm"
-                    for="evaluate10"
-                    >Any</label
-                  >
-                </div>
-              </div>
-
-              <div class="col form-group text-right">
-                <button type="button" class="btn btn-sm btn-primary">
-                  Add <span class="sr-only">this evaluate</span>
-                </button>
-              </div>
-            </section>
-
-            <!-- ROW  -->
-            <section class="form-row form-row--compressed align-items-center">
-              <div class="form-group col-md-1">
-                <h5 class="col-form-label col-form-label-sm">Compare</h5>
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="compare1"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select</option>
-                  <option>These Amounts</option>
-                  <option>Total-1</option>
-                  <option>Trigger Line Amounts</option>
-                </select>
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="compare2"
-                  class="form-control form-control-sm"
-                  aria-label="From"
-                >
-                  <option selected>From</option>
-                  <option>col 1</option>
-                  <option>col 2</option>
-                  <option>col 3</option>
-                  <option>col 10</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <label class="col-form-label col-form-label-sm">to</label>
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="compare3"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>To</option>
-                  <option>col 1</option>
-                  <option>col 2</option>
-                  <option>col 3</option>
-                  <option>col 10</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="compare4"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select</option>
-                  <option>equal</option>
-                  <option>not equal</option>
-                  <option>greater than or equal</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="compare5"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select</option>
-                  <option>Total-1</option>
-                  <option>Total-2</option>
-                </select>
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="compare6"
-                  class="form-control form-control-sm"
-                  aria-label="From"
-                >
-                  <option selected>From</option>
-                  <option>col 1</option>
-                  <option>col 2</option>
-                  <option>col 3</option>
-                  <option>col 10</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <label class="col-form-label col-form-label-sm">to</label>
-              </div>
-
-              <div class="form-group col-auto">
-                <select
-                  id="compare7"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>To</option>
-                  <option>col 1</option>
-                  <option>col 2</option>
-                  <option>col 3</option>
-                  <option>col 10</option>
-                </select>
-              </div>
-              <div class="form-group col-auto">
-                <label for="compare8" class="col-form-label col-form-label-sm"
-                  >+/-</label
-                >
-              </div>
-              <div class="form-group col-auto">
-                <input
-                  type="text"
-                  class="form-control form-control-sm"
-                  id="compare8"
-                />
-              </div>
-
-              <div class="col form-group text-right">
-                <button type="button" class="btn btn-sm btn-primary">
-                  Add <span class="sr-only">this Compare</span>
-                </button>
-              </div>
-            </section>
-            <!-- ROW  -->
-            <section class="form-row align-items-center">
-              <div class="form-group col-md-1">
-                <h5 class="col-form-label col-form-label-sm">Edit Opt</h5>
-              </div>
-              <div class="form-group col-auto">
-                <select
-                  id="editOpt1"
-                  class="form-control form-control-sm"
-                  aria-label="{-Add_Label_Here-}"
-                >
-                  <option selected>Select value</option>
-                  <option>...</option>
-                </select>
-              </div>
-
-              <div class="col form-group text-right">
-                <button type="button" class="btn btn-sm btn-primary">
-                  Add <span class="sr-only">this Edit Opt</span>
-                </button>
-              </div>
-            </section>
-            <!-- /end ROW  -->
-            <!--  -->
-          </main>
+          </div>
         </div>
       </div>
-    </div>
-    <!--  </div>  -->
-    <!-- /end container -->
+      <!-- /end container -->
+      <!-- ************************************************************************************************ -->
+      <div class="container-fluid bg-light py-4 mb-4">
+        <div class="container">
+          <div class="table-wrapper">
+            <table class="table table-sm table-hover table-rule-definitions">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span class="sr-only">Sorting controls</span>
+                  </th>
+                  <th scope="col">
+                    <span class="sr-only">Sorting order</span>
+                  </th>
+                  <th scope="col">Rule Definition</th>
+                  <th scope="col"><span class="sr-only">More info</span></th>
+                  <th scope="col"><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="row no-gutters row-sort-btns">
+                      <button class="col-auto icon icon-arrow-up">
+                        <span class="sr-only">Move this row up</span>
+                      </button>
+                      <button class="col-auto icon icon-arrow-down">
+                        <span class="sr-only">Move this row down</span>
+                      </button>
+                    </div>
+                  </td>
+                  <td><span>1</span></td>
+                  <td>Transmit [TRANSMIT] equal "Enacted/requested [0]"</td>
+                  <td>
+                    <!-- @Developer: repeat this 'drop-up' code for each value this column -->
+                    <div class="btn-group dropup">
+                      <button
+                        type="button"
+                        class="btn btn-link"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        150 lines
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <div
+                          tabindex="0"
+                          class="dropdown-item"
+                          style="min-width: 32rem; white-space: normal;"
+                        >
+                          9999999, 8888888, 7777777, 6666666, 9999999, 8888888,
+                          7777777, 6666666&hellip;
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">View All</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-link">Edit</button
+                    ><button
+                      class="btn btn-link"
+                      data-toggle="modal"
+                      data-target="#deleteModal"
+                      data-whatever="Transmit [TRANSMIT] equal..."
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="row no-gutters row-sort-btns">
+                      <button class="col-auto icon icon-arrow-up">
+                        <span class="sr-only">Move this row up</span>
+                      </button>
+                      <button class="col-auto icon icon-arrow-down">
+                        <span class="sr-only">Move this row down</span>
+                      </button>
+                    </div>
+                  </td>
+                  <td><span>2</span></td>
+                  <td>
+                    <span class="text-danger"
+                      ><span class="sr-only">Error alert:</span>
+                      <span aria-hidden="true">==></span> Flag an error if total
+                      is ngative, i.e., if the outlays in any year are greater
+                      than BA plus balances.</span
+                    >
+                  </td>
+                  <td>151 lines</td>
+                  <td>
+                    <button class="btn btn-link">Edit</button
+                    ><button
+                      class="btn btn-link"
+                      data-toggle="modal"
+                      data-target="#deleteModal"
+                      data-whatever="Transmit [TRANSMIT] equal..."
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="row no-gutters row-sort-btns">
+                      <button class="col-auto icon icon-arrow-up">
+                        <span class="sr-only">Move this row up</span>
+                      </button>
+                      <button class="col-auto icon icon-arrow-down">
+                        <span class="sr-only">Move this row down</span>
+                      </button>
+                    </div>
+                  </td>
+                  <td><span>3</span></td>
+                  <td>
+                    <div class="row">
+                      <div class="form-group col-auto">
+                        <select
+                          id="select0"
+                          class="form-control"
+                          aria-label="{-Add_Label_Here-}"
+                        >
+                          <option selected>Lock amounts</option>
+                          <option>...</option>
+                        </select>
+                      </div>
 
+                      <div class="form-group col-auto">
+                        <select
+                          id="select1"
+                          class="form-control"
+                          aria-label="{-Add_Label_Here-}"
+                        >
+                          <option selected>PY-1</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-auto">
+                        <span id="1-helptext" class="col-form-label">to</span>
+                      </div>
+
+                      <div class="form-group col-auto">
+                        <select
+                          id="select2"
+                          class="form-control"
+                          aria-label="{-Add_Label_Here-}"
+                        >
+                          <option selected>BY+9</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+                    </div>
+                  </td>
+                  <td>151 lines</td>
+                  <td>
+                    <div class="d-flex">
+                      <button class="btn btn-primary mr-1">Save</button>
+                      <button class="btn btn-outline-primary bg-white mr-1">
+                        Cancel
+                      </button>
+                      <button
+                        class="btn btn-link"
+                        data-toggle="modal"
+                        data-target="#deleteModal"
+                        data-whatever="Lock amounts..."
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="row no-gutters row-sort-btns">
+                      <button class="col-auto icon icon-arrow-up">
+                        <span class="sr-only">Move this row up</span>
+                      </button>
+                      <button class="col-auto icon icon-arrow-down">
+                        <span class="sr-only">Move this row down</span>
+                      </button>
+                    </div>
+                  </td>
+                  <td><span>4</span></td>
+                  <td>Transmit [TRANSMIT] equal "Enacted/requested [0]"</td>
+                  <td>151 lines</td>
+                  <td>
+                    <button class="btn btn-link">Edit</button
+                    ><button
+                      class="btn btn-link"
+                      data-toggle="modal"
+                      data-target="#deleteModal"
+                      data-whatever="Transmit [TRANSMIT] equal..."
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- /end container -->
+      </div>
+      <!-- /end container-fluid -->
+      <!-- ******************************************************************************************************** -->
+
+      <div class="container">
+        <!-- ROW 1  -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Account</h5>
+          </div>
+          <!-- @Developer: we need to add screen reader labels to these fields: {-Add_Label_Here-} -->
+          <div class="form-group col-md-2">
+            <select
+              class="form-control form-control-sm"
+              aria-label="account1"
+              ="{-Add_Label_Here-}"
+            >
+              <option selected>Select concept</option>
+              <option>{{concept_1}}</option>
+              <option>{{concept_2}}</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select id="account2" class="form-control form-control-sm">
+              <option selected>Select</option>
+              <option>equal</option>
+              <option>not equal</option>
+              <option>in</option>
+              <option>not in</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="account3"
+              aria-label="{-Add_Label_Here-}"
+            />
+          </div>
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Account</span>
+            </button>
+          </div>
+        </section>
+        <!-- ROW  -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Line</h5>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="line1"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select concept</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="line2"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="line3"
+              aria-label="{-Add_Label_Here-}"
+            />
+          </div>
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this line</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ROW  -->
+        <section
+          class="form-row form-row--compressed align-items-center no-gutters"
+        >
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">
+              Math
+            </h5>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="math1"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option>Operation</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="math2"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Var</option>
+              <option>Total-1</option>
+              <option>Total-2</option>
+              <option>Total-3</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <label class="col-form-label col-form-label-sm">Starting in</label>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="math3"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Col</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <!--@UI: size="1" is unique to this input -->
+            <input
+              size="1"
+              type="text"
+              class="form-control form-control-sm"
+              id="math4"
+              aria-label="{-Add_Label_Here-}"
+              value="1"
+              aria-describedby="helptext1"
+            />
+          </div>
+          <div class="form-group col-auto">
+            <span id="helptext1" class="col-form-label col-form-label-sm"
+              >times</span
+            >
+          </div>
+
+          <div class="col-auto">
+            <div class="form-check form-group">
+              <input class="form-check-input mt-2" type="checkbox" id="math5" />
+              <label class="form-check-label col-form-label-sm" for="math5">
+                Sum
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="math6"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Year</option>
+              <option>PY-1</option>
+              <option>PY</option>
+              <option>CY</option>
+              <option>BY+9</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <span id="helptext2" class="col-form-label col-form-label-sm"
+              >to</span
+            >
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="math7"
+              class="form-control form-control-sm"
+              aria-labelledby="helptext2"
+            >
+              <option selected>Year</option>
+              <option>PY-1</option>
+              <option>PY</option>
+              <option>CY</option>
+              <option>BY+9</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <span id="helptext3" class="col-form-label col-form-label-sm"
+              >of</span
+            >
+          </div>
+          <div class="form-group col-auto">
+            <select
+              class="custom-select"
+              size="1"
+              multiple
+              aria-labelledby="helptext3"
+            >
+              <option selected>Selected line(s)</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="select3"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Option</option>
+              <option>(positive amts only)</option>
+              <option>(negative amts only)</option>
+            </select>
+          </div>
+
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Math</span>
+            </button>
+          </div>
+        </section>
+        <!-- ROW  -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Control</h5>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="control1"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select value</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Control</span>
+            </button>
+          </div>
+        </section>
+        <!-- ROW  -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Evaluate</h5>
+          </div>
+
+          <div class="form-group col-auto">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="evaluate1"
+                value="option1"
+              />
+              <label class="form-check-label col-form-label-sm" for="evaluate1"
+                >Check</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="evaluate2"
+                value="option2"
+              />
+              <label class="form-check-label col-form-label-sm" for="evaluate2"
+                >Trigger</label
+              >
+            </div>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="evaluate3"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="evaluate4"
+              class="form-control form-control-sm"
+              aria-label="From"
+            >
+              <option selected>From</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 10</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <label for="evaluate5" class="col-form-label col-form-label-sm"
+              >to</label
+            >
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="evaluate5"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>To</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 10</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="evaluate6"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select</option>
+              <option>equal</option>
+              <option>not equal</option>
+              <option>greater than or equal</option>
+              <option>does not have comment</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="evaluate7"
+              aria-label="{-Add_Label_Here-}"
+            />
+          </div>
+
+          <div class="form-group col-auto">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="evaluate9"
+                value="option1"
+              />
+              <label class="form-check-label col-form-label-sm" for="evaluate9"
+                >All</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="evaluate10"
+                value="option2"
+              />
+              <label class="form-check-label col-form-label-sm" for="evaluate10"
+                >Any</label
+              >
+            </div>
+          </div>
+
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this evaluate</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ROW  -->
+        <section class="form-row form-row--compressed align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Compare</h5>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="compare1"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select</option>
+              <option>These Amounts</option>
+              <option>Total-1</option>
+              <option>Trigger Line Amounts</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="compare2"
+              class="form-control form-control-sm"
+              aria-label="From"
+            >
+              <option selected>From</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+              <option>col 10</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <label class="col-form-label col-form-label-sm">to</label>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="compare3"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>To</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+              <option>col 10</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="compare4"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select</option>
+              <option>equal</option>
+              <option>not equal</option>
+              <option>greater than or equal</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="compare5"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select</option>
+              <option>Total-1</option>
+              <option>Total-2</option>
+            </select>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="compare6"
+              class="form-control form-control-sm"
+              aria-label="From"
+            >
+              <option selected>From</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+              <option>col 10</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <label class="col-form-label col-form-label-sm">to</label>
+          </div>
+
+          <div class="form-group col-auto">
+            <select
+              id="compare7"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>To</option>
+              <option>col 1</option>
+              <option>col 2</option>
+              <option>col 3</option>
+              <option>col 10</option>
+            </select>
+          </div>
+          <div class="form-group col-auto">
+            <label for="compare8" class="col-form-label col-form-label-sm"
+              >+/-</label
+            >
+          </div>
+          <div class="form-group col-auto">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="compare8"
+            />
+          </div>
+
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Compare</span>
+            </button>
+          </div>
+        </section>
+        <!-- ROW  -->
+        <section class="form-row align-items-center">
+          <div class="form-group col-md-1">
+            <h5 class="col-form-label col-form-label-sm">Edit Opt</h5>
+          </div>
+          <div class="form-group col-auto">
+            <select
+              id="editOpt1"
+              class="form-control form-control-sm"
+              aria-label="{-Add_Label_Here-}"
+            >
+              <option selected>Select value</option>
+              <option>...</option>
+            </select>
+          </div>
+
+          <div class="col form-group text-right">
+            <button type="button" class="btn btn-sm btn-primary">
+              Add <span class="sr-only">this Edit Opt</span>
+            </button>
+          </div>
+        </section>
+        <!-- /end ROW  -->
+        <!-- </main> -->
+      </div>
+      <!-- /end container -->
+    </main>
     <!--  ======================================================================== -->
-    <div class="shadow fixed-bottom bg-white">
+    <div class="shadow fixed-bottom bg-white pt-2">
       <div class="container">
         <div class="form-row align-items-center">
           <div class="form-group">
             <button class="btn btn-primary">
-              Save and publish for testing
+              Save And Publish For Testing
             </button>
             <button class="btn btn-outline-primary">Save</button>
             <button class="btn btn-outline-primary">Publish</button>
@@ -1422,11 +1428,13 @@
 
           <div class="col text-right">
             <p>
-              <small class="text-muted"
+              <small class="text-muted d-block"
                 >Last published: Mark Smith
                 <time datetime="2020-06-19T17:23:05.929"
                   >6/19/2020 17:23:05</time
-                ><br />
+                >
+              </small>
+              <small class="text-muted d-block">
                 Last updated: Mark Smith
                 <time datetime="2020-06-19T17:23:05.929"
                   >6/19/2020 17:23:05</time
@@ -1480,12 +1488,11 @@
     <!-- @Developer: replace object tag with proper include file -->
     <object data="footer-site.html" width="100%"></object>
 
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- @Developer: We will want to replace these with files on server - and the full jQuery library may end up being required, using slim version here -->
     <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
     <script
@@ -1499,7 +1506,6 @@
       crossorigin="anonymous"
     ></script>
     <script>
-
       $("#deleteModal").on("show.bs.modal", function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         var recipient = button.data("whatever"); // Extract info from data-* attributes
