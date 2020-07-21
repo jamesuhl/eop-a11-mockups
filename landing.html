@@ -7,6 +7,8 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -14,130 +16,18 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="styles.css">
+    
     <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+ 
     <script src="main.js"></script>
 
     <title>Rule Builder | EOP</title>
-    <style>
-      /* BS Overrides */
-      /* font ramp adjust */
-      label {
-        font-size: 0.88rem;
-        margin-bottom: 0.25rem;
-      }
-      a {
-        font-size: 0.88rem;
-        color: #3673a3;
-      }
-      /* end font ramp adjust */
 
-      .btn-primary {
-        background-color: #3673a3;
-        border-color: #3673a3;
-      }
-      .btn-outline-primary {
-        border-color: #3673a3;
-        color: #3673a3;
-      }
-      .bg-primary {
-        background-color: #3673a3 !important;
-      }
-      .border-primary {
-        border-color: #3673a3 !important;
-      }
-      .btn-link {
-        color: #3673a3;
-      }
-      .table--landing thead tr th:nth-child(2),
-      .table--landing tbody tr td:nth-child(2) {
-        min-width: 50%;
-      }
-
-      /* AG Grid Overrides */
-      .ag-root-wrapper {
-        border: none !important;
-      }
-      .ag-header-row {
-        background-color: #fff !important;
-      }
-
-      .btn {
-        margin-bottom: 0.25rem;
-      }
-
-      @media (min-width: 768px) {
-        .btn {
-          margin-bottom: 0;
-        }
-      }
-
-      /* ---------------------------------------
-   Skip Links
-   --------------------------------------- */
-
-      .sr-only.focusable:focus {
-        position: static !important;
-        clip: auto;
-        overflow: visible;
-        height: auto;
-      }
-
-      .nav-skip-links {
-        position: fixed !important;
-        left: 20%;
-        top: 0;
-        width: 30rem;
-        border-radius: 4px;
-        z-index: 3000;
-      }
-      .nav-skip-links a {
-        display: block;
-        padding: 5px;
-        border: 1px solid #000;
-        border-radius: 4px;
-        background: #3673a3;
-        color: #fff;
-        text-align: center;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-      .nav-skip-links a:hover,
-      .nav-skip-links a:focus,
-      .nav-skip-links a:active {
-        color: #fff;
-        text-decoration: none;
-      }
-      .nav-skip-links a:hover {
-        background-color: #007bff;
-      }
-      .nav-skip-links .focusable:focus {
-        width: 30rem;
-      }
-      .bg-light .btn-outline-primary {
-        background-color: #fff;
-      }
-      .bg-light .btn-outline-primary:hover,
-      .bg-light .btn-outline-primary:hover {
-        background-color: #007bff;
-        color: #fff;
-      }
-    </style>
   </head>
   <body>
-    <!-- skip links go here -->
-    <nav class="nav-skip-links" aria-label="Skip Links">
-      <a class="sr-only focusable" id="a-skiplink-main" href="#main-content"
-        >Skip to main content</a
-      >
-      <a class="sr-only focusable" id="a-skiplink-footer" href="#site-footer"
-        >Skip to footer</a
-      >
-    </nav>
 
-    <h1 class="sr-only">Rule Builder</h1>
-
-    <!-- @Developer: this object tag is just for mockup display, replace with HTML from header component -->
-    <object data="header-site.html" width="100%"></object>
+     <!--#include file="header-site.html" -->
 
     <main id="main-content">
       <div class="container-fluid bg-light mb-4 py-4">
@@ -384,8 +274,7 @@
       </div>
     </main>
 
-    <!-- @Developer: replace object tag with component -->
-    <object data="footer-site.html" width="100%"></object>
+    <!--#include file="footer-site.html" -->
 
     <!-- @Developer: jQuery first, then Popper.js, then Bootstrap JS, include libraries into Angular instead of using CDN -->
     <script

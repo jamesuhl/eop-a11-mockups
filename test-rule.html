@@ -15,105 +15,17 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    href="styles.css"
+  />
 
     <title>Test Rule | Rule Builder | EOP</title>
-    <style>
-      /* BS Overrides */
-      /* font ramp adjust */
-      label {
-        font-size: 0.88rem;
-        margin-bottom: 0.25rem;
-      }
-      a {
-        font-size: 0.88rem;
-        color: #3673a3;
-      }
-      /* end font ramp adjust */
 
-      .btn-primary {
-        background-color: #3673a3;
-        border-color: #3673a3;
-      }
-      .btn-outline-primary {
-        border-color: #3673a3;
-        color: #3673a3;
-      }
-      .bg-primary {
-        background-color: #3673a3 !important;
-      }
-      .border-primary {
-        border-color: #3673a3 !important;
-      }
-      .btn-link {
-        color: #3673a3;
-      }
-      .rule-links a {
-        text-decoration: underline;
-      }
-      .rule-links .active {
-        color: #000;
-        text-decoration: none;
-      }
-
-      /* ---------------------------------------
-   Skip Links
-   --------------------------------------- */
-
-      .sr-only.focusable:focus {
-        position: static !important;
-        clip: auto;
-        overflow: visible;
-        height: auto;
-      }
-
-      .nav-skip-links {
-        position: fixed !important;
-        left: 20%;
-        top: 0;
-        width: 30rem;
-        border-radius: 4px;
-        z-index: 3000;
-      }
-      .nav-skip-links a {
-        display: block;
-        padding: 5px;
-        border: 1px solid #000;
-        border-radius: 4px;
-        background: #3673a3;
-        color: #fff;
-        text-align: center;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-      .nav-skip-links a:hover,
-      .nav-skip-links a:focus,
-      .nav-skip-links a:active {
-        color: #fff;
-        text-decoration: none;
-      }
-      .nav-skip-links a:hover {
-        background-color: #007bff;
-      }
-      .nav-skip-links .focusable:focus {
-        width: 30rem;
-      }
-    </style>
   </head>
   <body>
-    <!-- skip links go here -->
-    <nav class="nav-skip-links" aria-label="Skip Links">
-      <a class="sr-only focusable" id="a-skiplink-main" href="#main-content"
-        >Skip to main content</a
-      >
-      <a class="sr-only focusable" id="a-skiplink-footer" href="#site-footer"
-        >Skip to footer</a
-      >
-    </nav>
 
-    <h1 class="sr-only">Rule Builder</h1>
-
-    <object data="header-site.html" width="100%" height="100%"></object>
-
+<!--#include file="header-site.html" -->
     <div class="container">
       <div class="row">
         <div class="col">
@@ -195,8 +107,7 @@
         </div>
       </main>
     </div>
-    <!-- @Developer: replace object tag with proper component -->
-    <object data="footer-site.html" width="100%"></object>
+    <!--#include file="footer-site.html" -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

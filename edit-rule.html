@@ -7,6 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -14,264 +15,18 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    href="styles.css"
+  />
 
     <title>Edit Rule | Rule Builder | EOP</title>
 
-    <style>
-      /* BS Overrides */
-      /* font ramp adjust */
-      label {
-        font-size: 0.88rem;
-        margin-bottom: 0.25rem;
-      }
-      a {
-        font-size: 0.88rem;
-        color: #3673a3;
-      }
-      /* end font ramp adjust */
-      .btn-primary {
-        background-color: #3673a3;
-        border-color: #3673a3;
-      }
-      .btn-outline-primary {
-        border-color: #3673a3;
-        color: #3673a3;
-      }
-      .bg-primary {
-        background-color: #3673a3 !important;
-      }
-      .border-primary {
-        border-color: #3673a3 !important;
-      }
-      .btn-link {
-        color: #3673a3;
-      }
-
-      .btn-outline-primary.bg-white:hover {
-        background-color: #007bff !important;
-      }
-      .btn {
-        margin-bottom: 0.25rem;
-      }
-      @media (min-width: 768px) {
-        .btn {
-          margin-bottom: 0;
-        }
-      }
-
-      .site-header {
-        font-size: inherit !important;
-        display: inline-block;
-      }
-
-      .table-rule-definitions tbody tr td:nth-child(3) {
-        width: 100%;
-      }
-      .table-rule-definitions tbody tr td:nth-last-child(2) {
-        min-width: 5rem;
-      }
-      .table-rule-definitions tbody tr td:nth-child(4) {
-        min-width: 8rem;
-      }
-      .table-rule-definitions tbody tr td:last-child {
-        min-width: 9rem;
-        text-align: right;
-      }
-
-      .icon {
-        background-repeat: no-repeat;
-        background-position: center;
-        min-width: 1rem;
-        min-height: 0.75rem;
-        border: none;
-        background-color: transparent;
-        line-height: 0;
-      }
-      .icon-arrow-up {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.347' viewBox='0 0 12 10.347'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M31.575,42.3H28.693a.719.719,0,0,1-.72-.72v-2.9H24.857a.721.721,0,0,1-.51-1.231l5.278-5.284a.721.721,0,0,1,1.021,0l5.278,5.284a.721.721,0,0,1-.51,1.231H32.3v2.9A.719.719,0,0,1,31.575,42.3Z' transform='translate(-24.134 -31.95)'/%3E%3C/svg%3E");
-      }
-      .icon-arrow-down {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.349' viewBox='0 0 12 10.349'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M28.791,35h2.883a.719.719,0,0,1,.721.721v2.9h3.117a.721.721,0,0,1,.51,1.231l-5.279,5.285a.721.721,0,0,1-1.021,0l-5.276-5.285a.722.722,0,0,1,.51-1.231h3.114v-2.9A.719.719,0,0,1,28.791,35Z' transform='translate(-24.234 -35)'/%3E%3C/svg%3E");
-      }
-      .icon-disclosure {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9.71' viewBox='0 0 16 9.71'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M13.034,132.947l-7.121-7.121a.879.879,0,0,1,0-1.244l.831-.831a.879.879,0,0,1,1.242,0l5.67,5.643,5.67-5.643a.879.879,0,0,1,1.242,0l.831.831a.879.879,0,0,1,0,1.244l-7.121,7.121a.879.879,0,0,1-1.244,0Z' transform='translate(21.656 133.204) rotate(180)'/%3E%3C/svg%3E");
-      }
-      .icon-disclosure.collapsed {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9.71' viewBox='0 0 16 9.71'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%233673a3;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M13.034,132.947l-7.121-7.121a.879.879,0,0,1,0-1.244l.831-.831a.879.879,0,0,1,1.242,0l5.67,5.643,5.67-5.643a.879.879,0,0,1,1.242,0l.831.831a.879.879,0,0,1,0,1.244l-7.121,7.121a.879.879,0,0,1-1.244,0Z' transform='translate(-5.656 -123.495)'/%3E%3C/svg%3E");
-      }
-      .icon--append {
-        background-repeat: no-repeat;
-        background-position: right 0.25rem center;
-        padding-right: 1.5rem;
-      }
-
-      .icon--prepend {
-        background-repeat: no-repeat;
-        background-position: left 0.2rem center;
-        padding-left: 1.5rem;
-      }
-
-      .table-rule-definitions thead tr th {
-        border: none;
-      }
-      .table-rule-definitions thead th {
-        font-weight: normal;
-        font-size: 0.8rem;
-      }
-      .list-rule-definitions li {
-        border-bottom: 2px solid #fff;
-        padding: 0.25rem;
-        cursor: grabbing;
-      }
-      .list-rule-definitions li:hover {
-        outline: 1px dotted #007bff;
-      }
-
-      .table-rule-definitions tbody tr:first-child .icon-arrow-up {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.347' viewBox='0 0 12 10.347'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%23ccc;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M31.575,42.3H28.693a.719.719,0,0,1-.72-.72v-2.9H24.857a.721.721,0,0,1-.51-1.231l5.278-5.284a.721.721,0,0,1,1.021,0l5.278,5.284a.721.721,0,0,1-.51,1.231H32.3v2.9A.719.719,0,0,1,31.575,42.3Z' transform='translate(-24.134 -31.95)'/%3E%3C/svg%3E");
-      }
-
-      .table-rule-definitions tbody tr:last-child .icon-arrow-down {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10.349' viewBox='0 0 12 10.349'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:%23ccc;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M28.791,35h2.883a.719.719,0,0,1,.721.721v2.9h3.117a.721.721,0,0,1,.51,1.231l-5.279,5.285a.721.721,0,0,1-1.021,0l-5.276-5.285a.722.722,0,0,1,.51-1.231h3.114v-2.9A.719.719,0,0,1,28.791,35Z' transform='translate(-24.234 -35)'/%3E%3C/svg%3E");
-      }
-      .rule-links a {
-        text-decoration: underline;
-      }
-      .rule-links .active {
-        color: #000;
-        text-decoration: none;
-      }
-
-      .dropdown-item {
-        position: relative;
-        padding: 0.25rem 1.5rem 0.25rem 0.5rem;
-      }
-      .dropdown-item input {
-        position: absolute;
-        right: 0.5rem;
-        top: 0.6rem;
-      }
-
-      .form-row--compressed .form-control {
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-      @media (min-width: 768px) {
-        .row-sort-btns {
-          max-width: 1.2rem;
-        }
-      }
-
-      /* ---------------------------------------
-   Skip Links
-   --------------------------------------- */
-
-      .sr-only.focusable:focus {
-        position: static !important;
-        clip: auto;
-        overflow: visible;
-        height: auto;
-      }
-
-      .nav-skip-links {
-        position: fixed !important;
-        left: 20%;
-        top: 0;
-        width: 30rem;
-        border-radius: 4px;
-        z-index: 3000;
-      }
-      .nav-skip-links a {
-        display: block;
-        padding: 5px;
-        border: 1px solid #000;
-        border-radius: 4px;
-        background: #3673a3;
-        color: #fff;
-        text-align: center;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-      .nav-skip-links a:hover,
-      .nav-skip-links a:focus,
-      .nav-skip-links a:active {
-        color: #fff;
-        text-decoration: none;
-      }
-      .nav-skip-links a:hover {
-        background-color: #007bff;
-      }
-      .nav-skip-links .focusable:focus {
-        width: 30rem;
-      }
-    </style>
   </head>
   <body>
-    <!-- skip links go here -->
-    <nav class="nav-skip-links" aria-label="Skip Links">
-      <a class="sr-only focusable" id="a-skiplink-main" href="#main-content"
-        >Skip to main content</a
-      >
-      <a class="sr-only focusable" id="a-skiplink-footer" href="#site-footer"
-        >Skip to footer</a
-      >
-    </nav>
 
-    <h1 class="sr-only">Edit Rule | Rule Builder</h1>
+    <!--#include file="header-site.html" -->
 
-    <!-- Begin header component  -->
-
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html">
-        <img
-          src="assets/images/seal-eop--sm.png"
-          width="30"
-          height="30"
-          class="d-inline-block align-top"
-          alt="seal of the Executive Office of the President"
-          loading="lazy"
-        />
-        <h1 class="site-header">Rule Builder</h1>
-      </a>
-
-      <div>
-        <small class="navbar-text mr-4 text-right">
-          Welcome, Mark Smith<br />
-          <a href="#">Sign out</a>
-        </small>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Rule Builder Landing <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Some external link here</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Some external link here</a>
-          </li>
-        </ul>
-        <span class="navbar-text">
-          Navbar text with an inline element
-        </span>
-      </div>
-    </nav>
     <div class="sticky-top">
       <div class="alert alert-secondary rounded-0" role="alert">
         <div class="container">
@@ -294,18 +49,42 @@
           </div>
           <div class="col">
             <nav aria-label="Rule Links" class="text-right rule-links">
-              <a href="#" class="mr-3">View All Rules</a>
-              <a href="#" class="mr-3 active" aria-current="page">Edit Rule</a>
-              <a href="#" class="mr-3">Test Rule</a>
+              <a href="#" class="mr-3">View All&nbsp;Rules</a>
+              <a href="#" class="mr-3 active" aria-current="page">Edit&nbsp;Rule</a>
+              <a href="#" class="mr-3">Test&nbsp;Rule</a>
             </nav>
           </div>
         </div>
 
         <div class="row">
-          <div class="col">
+
+          <div class="col-12 col-md-4 order-md-last">
+            <div class="card card-body bg-light mb-4">
+              <h5 class="text-center">Excluded Users &amp; Groups</h5>
+              <div class="table-responsive mb-2" style="max-height: 180px;">
+              <ul class="list-unstyled text-right">
+                <li class="text-nowrap">OMBMX99 <button class="btn btn-link">Edit</button> <button class="btn btn-link">Delete</button></li>
+                <li class="text-nowrap">OMBBR27 <button class="btn btn-link">Edit</button> <button class="btn btn-link">Delete</button></li>
+                <li class="text-nowrap">OMBCB11 <button class="btn btn-link">Edit</button> <button class="btn btn-link">Delete</button></li>
+                
+                <li class="text-nowrap">S_CSR <button class="btn btn-link">Edit</button> <button class="btn btn-link">Delete</button></li>
+                <li class="text-nowrap">OMBCB11 <button class="btn btn-link">Edit</button> <button class="btn btn-link">Delete</button></li>
+                <li class="text-nowrap">OMBCB11 <button class="btn btn-link">Edit</button> <button class="btn btn-link">Delete</button></li>
+              </ul>
+              </div>
+              <!-- @Developer: on error add 'is-invalid' class, and insert <p class='text-danger'> with message, always leave <div id='err-text' in DOM  -->
+              <input class="form-control mb-1 is-invalid" type="text" aria-label="Enter Exclusion" aria-describedby="err-text">
+              <div class="invalid-feedback" id="err-text" aria-live="assertive">
+              <p class="text-danger">Rule exclusion insert failed - the user ID or user group may not be valid.</p>
+            </div>
+              <button class="btn btn-primary mb-1">Add Exclusion</button>
+              </div>
+          </div>
+
+          <div class="col-12 col-md">
             <!-- <main id="main-content"> -->
             <div class="form-row align-items-end">
-              <div class="form-group col-2">
+              <div class="form-group col-sm-3 col-md-2">
                 <label for="ruleNum"
                   >Rule Number
                   <span class="sr-only"
@@ -340,7 +119,7 @@
 
               <div class="form-group col">
                 <label for="a11-ref-1"
-                  >A-11 Reference
+                  >A-11&nbsp;Reference
                   <span class="sr-only">(Enter first part)</span></label
                 >
                 <input type="text" class="form-control" id="a11-ref-1" />
@@ -348,7 +127,7 @@
               <div class="form-group col-auto">
                 <label for="a11-ref-2"
                   ><span class="sr-only"
-                    >A-11&nbsp;Reference (Enter second part)</span
+                    >A-11 Reference (Enter second part)</span
                   ></label
                 >
                 <input type="text" class="form-control w-50" id="a11-ref-2" />
@@ -496,8 +275,7 @@
                         id="cloneFromRule1"
                       />
                       <label class="col-form-label" for="cloneFromRule2"
-                        ><!-- <span aria-hidden="true">-</span
-                      > --><span class="sr-only"
+                        ><span class="sr-only"
                           >Rule Number (Enter digits after hyphen)</span
                         ></label
                       >
@@ -518,17 +296,16 @@
               </div>
             </div>
 
-            <div class="form-row">
-              <div class="form-group col">
-                <label for="description1">Description</label>
-                <textarea class="form-control" id="description1"></textarea>
-              </div>
-              <div class="form-group col">
-                <label for="comments1">Comments</label>
-                <textarea class="form-control" id="comments1"></textarea>
-              </div>
-            </div>
-
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="description1">Description</label>
+      <textarea class="form-control" id="description1"></textarea>
+    </div>
+    <div class="form-group col">
+      <label for="comments1">Comments</label>
+      <textarea class="form-control" id="comments1"></textarea>
+    </div>
+  </div>
             <div class="form-row">
               <div class="form-group col-auto">
                 <button
@@ -542,7 +319,6 @@
                   Group
                 </button>
               </div>
-
               <div class="form-group col-5">
                 <!-- @Developer: div with aria-live MUST be in DOM when page/view loads, dynamically added HTML in this div is announced to screenreader  -->
                 <div aria-live="polite">
@@ -713,7 +489,7 @@
                     <div class="btn-group dropup">
                       <button
                         type="button"
-                        class="btn btn-link"
+                        class="btn btn-link p-0"
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -1430,13 +1206,13 @@
             <p>
               <small class="text-muted d-block"
                 >Last published: Mark Smith
-                <time datetime="2020-06-19T17:23:05.929"
+                <time class="text-nowrap" datetime="2020-06-19T17:23:05.929"
                   >6/19/2020 17:23:05</time
                 >
               </small>
               <small class="text-muted d-block">
                 Last updated: Mark Smith
-                <time datetime="2020-06-19T17:23:05.929"
+                <time class="text-nowrap" datetime="2020-06-19T17:23:05.929"
                   >6/19/2020 17:23:05</time
                 ></small
               >
@@ -1485,8 +1261,7 @@
       </div>
     </div>
 
-    <!-- @Developer: replace object tag with proper include file -->
-    <object data="footer-site.html" width="100%"></object>
+    <!--#include file="footer-site.html" -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- @Developer: We will want to replace these with files on server - and the full jQuery library may end up being required, using slim version here -->
